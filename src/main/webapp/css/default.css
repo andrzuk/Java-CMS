@@ -1,0 +1,97 @@
+body { color: #333; background-color: #efefef; font-family: sans-serif; font-size: 12px; line-height: 1.4; }
+a { color: #069; text-decoration: none; }
+a:hover { color: #c00; }
+a > img { border: 0px; }
+a.Ordered { color: red; }
+input[type="text"], input[type="email"], input[type="password"], input[type="search"], select, textarea { margin: 2px; padding: 3px; border: 1px solid #888; width: 95%; font-family: verdana; font-size: 1.0em; }
+input[type="checkbox"] { margin: 2px; border: 1px solid #888; }
+input[type="submit"], input[type="button"] { margin-top: 5px; margin-bottom: 5px; }
+input[type="button"].Current { font-weight: bold; color: red; }
+input[type="text"].Goto { width: 50px; text-align: center; }
+select.PageLines { width: 60px; }
+table { border: 1px solid #999; }
+td { border: 0px dotted #fff; padding: 1px 5px; }
+tr.Dialog > td { padding: 15px; }
+tr.Up > td { padding: 15px 10px 0px 10px; }
+tr.Down > td { padding: 0px 10px 15px 10px; }
+tr.active > td { color: #333; }
+tr.passive > td { color: #a00; }
+tr.index, tr.contact > td { font-weight: bold; }
+tr.ColumnHeaders > td { padding: 10px 4px; background-color: #9cf; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #999; }
+tr.ColumnHeaders > td > img { padding: 0px 10px; }
+tr.ListHeader > td { background-color: #9cf; border-bottom: 1px solid #999; padding: 5px; }
+tr.ColumnHeaders > td > table, tr.ListHeader > td > table { border: 0px dotted #fff; }
+tr.ColumnHeaders > td > span.Icon { padding: 0px 10px; }
+tr.ColumnHeaders > td > span.Title { position: relative; top: -10px; color: #555; }
+td.Icon { width: 5%; }
+td.Icon > img { padding: 5px 10px 0px 5px; } 
+td.Title { text-align: left; font-size: 1.8em; font-weight: bold; color: #c00; width: 40%; }
+td.Search { text-align: right; width: 55%; }
+td.Search > form > input[type="text"] { width: 150px; }
+a.Filter { font-weight: bold; color: #0a0; }
+input[type="image"].StopFilter { margin: 0px 0px 0px 5px; position: relative; top: 3px; }
+input[type="image"].StopFilter:hover { cursor: pointer; }
+td.Action { text-align: center; }
+td.Action > a > img { border: 0px; padding: 5px; }
+td.ActionBar { text-align: right; padding: 10px; border-top: 1px solid #999; background-color: #ddd; }
+tr.Showfilter > td { text-align: center; color: #666; margin: 2px; padding: 5px; border-bottom: 1px solid #999; background-color: #def; }
+tr.Noresults > td { text-align: center; color: #c00; background-color: #fca; font-weight: bold; margin: 10px; padding: 5px; border: 0px dotted #fff; }
+tr.AdminModules > td { text-align: center; font-size: 1.0em; }
+tr.AdminModules > td:hover { }
+tr.AdminStats > td { text-align: center; vertical-align: top; font-size: 1.0em; font-weight: bold; }
+tr.AdminStats > td:hover { }
+tr.odd > td { background-color: #d0d9df; font-size: 1.0em; }
+tr.even > td { background-color: #e0e9ef; font-size: 1.0em; }
+tr.preview > td > img { margin: 1px; border: 1px solid #999; }
+li { margin: 0.2em 0px; }
+
+nav.navbar > div.container { text-align: center; margin: 0px 20px; border-bottom: 1px solid #ccc; }
+ul.nav { padding: 0px; }
+ul.nav > li { display: inline; margin: 10px; font-size: 2.0em; font-style: italic; }
+ul.nav > li > a { color: #f30; }
+ul.nav > li > a:hover { color: #69c; text-decoration: underline; }
+
+article { margin: 20px; padding: 0px 5px; font-family: verdana; font-size: 1.2em; color: #444; text-align: justify; }
+
+div.comment { margin: 0px 45px; padding: 10px 0px 10px 0px; border-bottom: 1px dotted #bbb; }
+span.comment_nick { color: #c00; font-size: 1.0em; font-weight: bold; padding-right: 5px; }
+span.comment_date { color: #090; font-size: 1.0em; }
+span.comment_email { color: #009; font-size: 1.0em; }
+span.comment_ip { color: #777; font-size: 1.0em; padding-right: 15px; }
+span.comments_count { color: #f30; font-size: 1.0em; padding-left: 5px; }
+section.comment_text { color: #444; font-size: 1.0em; font-style: italic; margin-top: 10px; }
+span.comment_date > img { vertical-align: middle; padding: 0px 5px 0px 0px; }
+span.comment_nick > img { vertical-align: middle; padding: 0px 5px 0px 10px; }
+
+div.TopRow { margin: 0px 20px 10px 20px; padding: 0px 10px 5px 10px; border-bottom: 1px solid #ccc; }
+div.TopRow > span#Logo { margin-right: 50px; }
+div.TopRow > span#Logged { margin: 20px; position: absolute; top: 70px; right: 20px; color: #654; }
+div.TopRow > span#Tools { margin: 20px; position: absolute; top: 120px; right: 20px; }
+div.TopRow > span#Tools > span.ToolItem { margin-left: 10px; }
+div.TopRow > span#Tools > span.ToolItem > a > img { margin: 0px 10px -4px 10px; }
+
+div#Search { position: absolute; top: 20px; right: 20px; margin: 0px 20px 0px 20px; }
+
+div.footer { text-align: center; border-top: 1px solid #ccc; margin: 0px 20px 0px 20px; padding-top: 15px; }
+
+p.Message { text-align: center; margin: 20px; padding: 20px; }
+
+h1 { font-family: helvetica; font-style: italic; margin: 0px 20px; padding: 10px 0px; color: #69c; border-bottom: 1px dotted #bbb; }
+div.Modified { text-align: center; font-size: 0.5em; color: #090; line-height: 2.0em; font-weight: normal; }
+div.Modified > span.Date > img { vertical-align: middle; padding: 0px 5px 0px 0px; }
+div.Modified > span.User > img { vertical-align: middle; padding: 0px 5px 0px 10px; }
+div.Comments { text-align: center; font-size: 0.5em; color: #f30; line-height: 1.0em; font-weight: normal; }
+div.Separator { margin: 0px 20px; padding: 0px 0px; line-height: 0px; border-bottom: 1px dotted #bbb; }
+
+pre { border: 1px solid #ccc; color: green; background-color: #fff; padding: 10px; overflow: auto; word-wrap: normal; white-space: pre; }
+
+div#AdminPanel { margin: 20px 50px; }
+h3.Title { text-align: center; font-size: 1.0em; font-style: italic; color: #999; border-bottom: 1px dotted #ddd; }
+span.Module { font-size: 1.2em; font-weight: bold; }
+span.Module > a { color: #666; }
+span.Module > a:hover { color: #c00; }
+span.Actives { font-size: 2.0em; color: #e00; }
+span.Separate { font-size: 1.5em; color: #aaa; font-weight: normal; }
+span.All { font-size: 2.0em; color: #090; }
+span.Last { font-size: 1.0em; color: #666; }
+
