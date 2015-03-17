@@ -14,3 +14,4 @@ Java MVC Application based on Servlets &amp; JSP
   - managing comments to articles (pages)
   - picture gallery
   - visitors register
+* On-line URL: http://cms-jfrmwrk.rhcloud.com
