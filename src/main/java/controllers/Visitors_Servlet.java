@@ -54,7 +54,7 @@ public class Visitors_Servlet extends HttpServlet {
 		attributes = pageObject.setPageMeta(attributes);
 		
 		List<String> columns = Arrays.asList("id", "visitor_ip", "host_name", "http_referer", "request_uri", "visited");
-		List<String> widths = Arrays.asList("10%", "15%", "25%", "25%", "15%", "10%");
+		List<String> widths = Arrays.asList("10%", "15%", "20%", "30%", "15%", "10%");
 		List<String> aligns = Arrays.asList("left", "left", "left", "left", "left", "center");
 		
 		List<Visitors_Dao> visitors = null;

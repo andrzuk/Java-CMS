@@ -1,6 +1,8 @@
 package listeners;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
@@ -14,7 +16,15 @@ import models.Visitors_Model;
 
 public class Visitors implements ServletRequestListener {
 
-    public Visitors() {
+    private List<String> excludes;
+    
+	public Visitors() {
+		
+		excludes = new ArrayList<String>();
+		excludes.add(".png");
+		excludes.add(".jpg");
+		excludes.add(".css");
+		excludes.add(".js");
     }
 
     public void requestDestroyed(ServletRequestEvent servletRequestEvent)  { 
@@ -37,11 +47,23 @@ public class Visitors implements ServletRequestListener {
 		
 		Visitors_Model modelObject = new Visitors_Model(visitor);
 		
+		boolean ommit;
+		
 		try {
 			
 			if (http_referer != null) {
 				
-				int result = modelObject.save();
+				ommit = false;
+				
+				if (request_uri.length() > 3)
+					for (String exclude : excludes)
+						if (request_uri.substring(request_uri.length() - exclude.length(), request_uri.length()).equals(exclude)) 
+							ommit = true;
+				
+				if (!ommit) {
+					
+					int result = modelObject.save();
+				}
 			}
 		} 
 		catch (SQLException e) {
