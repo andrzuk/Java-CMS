@@ -44,15 +44,17 @@ public class Admin_Servlet extends HttpServlet {
 		Map<String, String> attributes = new HashMap<String, String>();
 		
 		List<Admin_Dao> statistics = null;
+		List<Admin_Dao> modules = null;
 		
-		Admin_Model statisticsObject = new Admin_Model();
+		Admin_Model modelObject = new Admin_Model();
 		Page_Meta pageObject = new Page_Meta();
 		
 		attributes = pageObject.setPageMeta(attributes);
 		
 		try {
 			
-			statistics = statisticsObject.getStatistics();
+			statistics = modelObject.getStatistics();
+			modules = modelObject.getModules();
 		} 
 		catch (SQLException e) {
 
@@ -69,6 +71,7 @@ public class Admin_Servlet extends HttpServlet {
 		attributes.put("logged", (String) request.getSession().getAttribute("user_login"));
 		request.setAttribute("page", attributes);
 		request.setAttribute("statistics", statistics);
+		request.setAttribute("modules", modules);
 		
 		request.setAttribute("message", request.getSession().getAttribute("message"));
 		request.getSession().removeAttribute("message");

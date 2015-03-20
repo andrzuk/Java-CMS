@@ -36,10 +36,6 @@ td.Action > a > img { border: 0px; padding: 5px; }
 td.ActionBar { text-align: right; padding: 10px; border-top: 1px solid #999; background-color: #ddd; }
 tr.Showfilter > td { text-align: center; color: #666; margin: 2px; padding: 5px; border-bottom: 1px solid #999; background-color: #def; }
 tr.Noresults > td { text-align: center; color: #c00; background-color: #fca; font-weight: bold; margin: 10px; padding: 5px; border: 0px dotted #fff; }
-tr.AdminModules > td { text-align: center; font-size: 1.0em; }
-tr.AdminModules > td:hover { }
-tr.AdminStats > td { text-align: center; vertical-align: top; font-size: 1.0em; font-weight: bold; }
-tr.AdminStats > td:hover { }
 tr.odd > td { background-color: #d0d9df; font-size: 1.0em; }
 tr.even > td { background-color: #e0e9ef; font-size: 1.0em; }
 tr.preview > td > img { margin: 1px; border: 1px solid #999; }
@@ -85,8 +81,12 @@ div.Separator { margin: 0px 20px; padding: 0px 0px; line-height: 0px; border-bot
 
 pre { border: 1px solid #ccc; color: green; background-color: #fff; padding: 10px; overflow: auto; word-wrap: normal; white-space: pre; }
 
-div#AdminPanel { margin: 20px 50px; }
+div#AdminPanel { margin: 30px 30px; }
 h3.Title { text-align: center; font-size: 1.0em; font-style: italic; color: #999; border-bottom: 1px dotted #ddd; }
+div.AdminStats { text-align: center; }
+div.AdminModules { text-align: center; }
+span.StatsElement { margin: 10px; padding: 10px; display: inline-block; text-align: center; vertical-align: top; font-size: 1.0em; font-weight: bold; }
+span.ModulesElement { margin: 10px; padding: 10px; display: inline-block; text-align: center; font-size: 1.0em; }
 span.Module { font-size: 1.2em; font-weight: bold; }
 span.Module > a { color: #666; }
 span.Module > a:hover { color: #c00; }

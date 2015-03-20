@@ -80,6 +80,95 @@ public class Admin_Model {
 		return statistics;
 	}
 
+	public List<Admin_Dao> getModules() throws SQLException, ParseException {
+
+		String module_name = null;
+		Admin_Dao module_item = null;
+		List<Admin_Dao> modules = new ArrayList<Admin_Dao>();
+
+		module_name = "config";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/config.png");
+		module_item.setTitle("Konfiguracja");
+		modules.add(module_item);
+		
+		module_name = "categories";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/folder_page.png");
+		module_item.setTitle("Kategorie");
+		modules.add(module_item);
+		
+		module_name = "pages";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/page.png");
+		module_item.setTitle("Podstrony");
+		modules.add(module_item);
+		
+		module_name = "comments";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/reports.png");
+		module_item.setTitle("Komentarze");
+		modules.add(module_item);
+		
+		module_name = "messages";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/mail_message.png");
+		module_item.setTitle("Wiadomości");
+		modules.add(module_item);
+		
+		module_name = "images";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/picture.png");
+		module_item.setTitle("Galeria");
+		modules.add(module_item);
+	    
+		module_name = "users";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/user.png");
+		module_item.setTitle("Użytkownicy");
+		modules.add(module_item);
+
+		module_name = "acl";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/acl.png");
+		module_item.setTitle("ACL");
+		modules.add(module_item);
+
+		module_name = "visitors";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/internet.png");
+		module_item.setTitle("Odwiedziny");
+		modules.add(module_item);
+
+		module_name = "excludes";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/list_checked.png");
+		module_item.setTitle("Wykluczenia");
+		modules.add(module_item);
+		
+		return modules;
+	}
+
 	private int getActives(String module_name, String visible, String state) throws SQLException, ParseException {
 
 		int result = 0;
