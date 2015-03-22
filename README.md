@@ -1,7 +1,7 @@
 # Java-CMS
 Java MVC Application based on Servlets &amp; JSP
 
-* Full featured CMS written in Java. 
+* Full featured CMS written in Java EE.
 * Applied MVC architecture, where servlets are controllers and JSP / JSTL are views. 
 * Uses JDBC connection to MySQL database.
 * Contains user login & admin panel.
