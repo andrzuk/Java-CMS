@@ -26,6 +26,7 @@ public class ACL {
 		items.put("messages", 2);
 		items.put("users", 1);
 		items.put("acl", 1);
+		items.put("logins", 1);
 		items.put("images", 3);
 		items.put("visitors", 2);
 		items.put("excludes", 2);

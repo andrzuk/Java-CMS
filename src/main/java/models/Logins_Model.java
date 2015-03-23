@@ -1,7 +1,5 @@
 package models;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,21 +10,21 @@ import java.util.List;
 
 import utilities.Paginator;
 import utilities.Sorting;
-import dao.Visitors_Dao;
-import models.Excludes_Model;
+import dao.Logins_Dao;
+import dao.Users_Dao;
 
-public class Visitors_Model {
+public class Logins_Model {
 
-	private Visitors_Dao visitor;
+	private Logins_Dao login;
 	
 	private String filter;
 	
-	public Visitors_Model() {		
+	public Logins_Model() {		
 	}
 
-	public Visitors_Model(Visitors_Dao visitor) {
+	public Logins_Model(Logins_Dao login) {
 
-		this.visitor = visitor;
+		this.login = login;
 	}
 	
 	public void setFilter(String filter) {
@@ -36,30 +34,15 @@ public class Visitors_Model {
 
 	private String getCondition() throws SQLException {
 		
-		Excludes_Model modelObject = new Excludes_Model();
-		
-		List<String> excludes = modelObject.getActive();
+        String result = "agent LIKE '%" + filter + "%'" +
+                " OR user_ip LIKE '%" + filter + "%'" +
+                " OR login LIKE '%" + filter + "%'" +
+        		" OR password LIKE '%" + filter + "%'";
 
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append("'NULL', ");
-		
-		for (String each: excludes) {
-
-			sb.append("'");
-			sb.append(each);
-			sb.append("', ");
-		}
-		
-        String result = "visitor_ip NOT IN (" + sb.toString().replaceAll(", $", "") + ")" +
-                        " AND (visitor_ip LIKE '%" + filter + "%'" +
-        		        " OR http_referer LIKE '%" + filter + "%'" +
-        		        " OR request_uri LIKE '%" + filter + "%')";
-
-		return result;
+        return result;
 	}
 
-	public int save() throws SQLException {
+	public int save(Users_Dao user) throws SQLException {
 
 		int result = 0;
 		String query = null;
@@ -67,15 +50,17 @@ public class Visitors_Model {
 
 		try {
 			
-			query = "INSERT INTO visitors"
-					+ " (id, visitor_ip, http_referer, request_uri, visited) VALUES"
-					+ " (NULL, ?, ?, ?, NOW())";
+			query = "INSERT INTO logins"
+					+ " (id, agent, user_ip, user_id, login, password, login_time) VALUES"
+					+ " (NULL, ?, ?, ?, ?, ?, NOW())";
 
 			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
 			
-			preparedStatement.setString(1, visitor.getVisitor_ip());
-			preparedStatement.setString(2, visitor.getHttp_referer());
-			preparedStatement.setString(3, visitor.getRequest_uri());
+			preparedStatement.setString(1, login.getAgent());
+			preparedStatement.setString(2, login.getUser_ip());
+			preparedStatement.setInt(3, user != null ? user.getId() : 0);
+			preparedStatement.setString(4, login.getLogin());
+			preparedStatement.setString(5, login.getPassword());
 			
 			result = preparedStatement.executeUpdate();
 		} 
@@ -98,15 +83,11 @@ public class Visitors_Model {
 		return result;
 	}
 
-	public List<Visitors_Dao> getSegment(Paginator paginator, Sorting sorting) throws SQLException, ParseException {
+	public List<Logins_Dao> getSegment(Paginator paginator, Sorting sorting) throws SQLException, ParseException {
 
-		List<Visitors_Dao> visitors = new ArrayList<Visitors_Dao>();
-		Config_Model config = new Config_Model();
+		List<Logins_Dao> logins = new ArrayList<Logins_Dao>();
 		
-		int maxLength = Integer.parseInt(config.getConfig("http_referer_length"));
-		String referer = null;
 		String query = null;
-		InetAddress inet_address = null;
 		PreparedStatement preparedStatement = null;
 		
 		int starting_from = paginator.getRows_per_page() * paginator.getPage_index();
@@ -115,7 +96,7 @@ public class Visitors_Model {
 
 		try {
 			
-			query = "SELECT *, visitor_ip AS host_name FROM visitors" +
+			query = "SELECT * FROM logins" +
 			        " WHERE " + getCondition() + 
 					" ORDER BY " + sorting.getSort_field() + " " + sorting.getSort_order() +
 			        " LIMIT " + starting + ", " + showing;
@@ -126,28 +107,22 @@ public class Visitors_Model {
 
 			while (rs.next()) {
 				
-				inet_address = InetAddress.getByName(rs.getString("visitor_ip"));
-				referer = rs.getString("http_referer");
-				referer = referer.length() > maxLength ? referer.substring(0, maxLength) : referer;
-				
-				visitor = new Visitors_Dao();
+				login = new Logins_Dao();
                 
-                visitor.setId(rs.getInt("id"));
-                visitor.setVisitor_ip(rs.getString("visitor_ip"));
-                visitor.setHost_name(inet_address.getHostName());
-                visitor.setHttp_referer(referer);
-                visitor.setRequest_uri(rs.getString("request_uri"));
-                visitor.setVisited(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("visited")));
-                visitors.add(visitor);
+                login.setId(rs.getInt("id"));
+                login.setAgent(rs.getString("agent"));
+                login.setUser_ip(rs.getString("user_ip"));
+                login.setUser_id(rs.getInt("user_id"));
+                login.setLogin(rs.getString("login"));
+                login.setPassword(rs.getString("password"));
+                login.setLogin_time(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("login_time")));
+                
+                logins.add(login);
             }			
 		} 
 		catch (SQLException e) {
 
 			System.out.println(e.getMessage());
-		} 
-		catch (UnknownHostException e) {
-		
-			e.printStackTrace();
 		} 
 		finally {
 
@@ -161,7 +136,7 @@ public class Visitors_Model {
 			}
 		}
 		
-		return visitors;
+		return logins;
 	}
 	
 	public int getCount() throws SQLException {
@@ -173,7 +148,7 @@ public class Visitors_Model {
 
 		try {
 			
-			query = "SELECT COUNT(*) AS licznik FROM visitors" +
+			query = "SELECT COUNT(*) AS licznik FROM logins" +
 			        " WHERE " + getCondition();
 
 			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);

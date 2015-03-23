@@ -21,18 +21,7 @@ public class Admin_Model {
 		String module_name = null;
 		Admin_Dao stat_item = null;
 		List<Admin_Dao> statistics = new ArrayList<Admin_Dao>();
-		/*
-		module_name = "configuration";
-		stat_item = new Admin_Dao();
-		stat_item.setModule(module_name);
-		stat_item.setActives(getActives(module_name, "active", "1"));
-		stat_item.setAll(getAll(module_name));
-		stat_item.setLast_item(getLast(module_name, "modified"));
-		stat_item.setLink("/config");
-		stat_item.setImage("images/config.png");
-		stat_item.setTitle("Konfiguracja");
-		statistics.add(stat_item);
-		*/
+
 		module_name = "categories";
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
@@ -148,6 +137,14 @@ public class Admin_Model {
 		module_item.setLink("/" + module_name);
 		module_item.setImage("images/acl.png");
 		module_item.setTitle("ACL");
+		modules.add(module_item);
+
+		module_name = "logins";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/password.png");
+		module_item.setTitle("Logowania");
 		modules.add(module_item);
 
 		module_name = "visitors";

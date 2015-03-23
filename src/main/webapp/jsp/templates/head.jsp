@@ -19,6 +19,6 @@
   	  <title><c:out value="${page.main_title}" /></title>
     </c:when>
     <c:otherwise>
-      <title>Java Application based on Servlet Technology</title>
+      <title>Java EE Application on Servlets & JSP</title>
     </c:otherwise>
   </c:choose> 

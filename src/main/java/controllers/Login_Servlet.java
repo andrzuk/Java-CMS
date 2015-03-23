@@ -17,10 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import checkers.Page_Meta;
 import models.Categories_Model;
+import models.Logins_Model;
 import models.Users_Model;
 import utilities.Messages;
 import validators.Users_Validator;
 import dao.Categories_Dao;
+import dao.Logins_Dao;
 import dao.Users_Dao;
 
 @WebServlet("/login")
@@ -100,10 +102,17 @@ public class Login_Servlet extends HttpServlet {
 		if (request.getParameter("login") != null) {
 			
 			Users_Dao user = new Users_Dao();
+			Logins_Dao login = new Logins_Dao();
 			
 			user = setData(request, user);
 			
+	    	login.setAgent(request.getHeader("User-Agent"));
+	    	login.setUser_ip(request.getRemoteAddr());
+	    	login.setLogin(request.getParameter("login"));
+	    	login.setPassword(request.getParameter("password"));
+	    	
 			Users_Model modelObject = new Users_Model(user);
+			Logins_Model loginObject = new Logins_Model(login);
 			
 			Users_Validator validatorObject = new Users_Validator();
 			
@@ -114,6 +123,7 @@ public class Login_Servlet extends HttpServlet {
 				try {
 					
 					user = modelObject.authorize(user);
+					loginObject.save(user);
 				} 
 				catch (SQLException e) {
 					
