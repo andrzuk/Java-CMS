@@ -302,7 +302,7 @@ INSERT INTO `configuration` (`id`, `key_name`, `key_value`, `meaning`, `field_ty
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `first_name`, `last_name`, `email`, `status`, `registered`, `logged_in`, `modified`, `logged_out`, `active`) VALUES
-(1, 'admin', 'e6c760b3216a51c656c5861d72d5bf62', 'Andrzej', 'Żukowski', 'andrzuk@wp.pl', 1, '2015-02-03 10:55:50', '2015-02-03 10:55:50', '2015-03-11 04:41:32', '2015-02-03 10:55:50', 1);
+(1, 'admin', '86bf621e63216a5c5dc761c6560b72d5', 'Andrzej', 'Żukowski', 'andrzuk@wp.pl', 1, '2015-02-03 10:55:50', '2015-02-03 10:55:50', '2015-03-11 04:41:32', '2015-02-03 10:55:50', 1);
 
 --
 -- Zrzut danych tabeli `user_roles`
