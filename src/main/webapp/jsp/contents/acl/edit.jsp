@@ -13,10 +13,26 @@
 			<span class="Title">Edytuj ACL</span>
 		</td>
 	</tr>
+	<tr>
+		<td>Login:</td>
+		<td colspan="2"><c:out value="${user.login}" /></td>
+	</tr>
+	<tr>
+		<td>Name:</td>
+		<td colspan="2"><c:out value="${user.first_name}" /> <c:out value="${user.last_name}" /></td>
+	</tr>
+	<tr>
+		<td>Status:</td>
+		<td colspan="2">
+			<c:if test="${user.status == 1}">Admin</c:if>
+			<c:if test="${user.status == 2}">Operator</c:if>
+			<c:if test="${user.status == 3}">User</c:if>
+		</td>
+	</tr>
 	<tr class="ColumnHeaders">
-		<td>Module</td>
-		<td>Function</td>
-		<td>Access</td>
+		<td class="Line">Module</td>
+		<td class="Line">Function</td>
+		<td class="Line">Access</td>
 	</tr>
 	
 	<form action="/<c:out value="${page.module}" />?action=edit" method="post">

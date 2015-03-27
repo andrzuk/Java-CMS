@@ -23,6 +23,7 @@ tr.ListHeader > td { background-color: #9cf; border-bottom: 1px solid #999; padd
 tr.ColumnHeaders > td > table, tr.ListHeader > td > table { border: 0px dotted #fff; }
 tr.ColumnHeaders > td > span.Icon { padding: 0px 10px; }
 tr.ColumnHeaders > td > span.Title { position: relative; top: -10px; color: #555; }
+tr.ColumnHeaders > td.Line { border-top: 1px solid #999; }
 td.Icon { width: 5%; }
 td.Icon > img { padding: 5px 10px 0px 5px; } 
 td.Title { text-align: left; font-size: 1.8em; font-weight: bold; color: #c00; width: 40%; }

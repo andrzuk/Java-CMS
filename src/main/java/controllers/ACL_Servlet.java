@@ -21,6 +21,7 @@ import utilities.Messages;
 import utilities.Paginator;
 import utilities.Sorting;
 import models.ACL_Model;
+import models.Users_Model;
 import checkers.ACL;
 import checkers.Page_Meta;
 import checkers.Parameters;
@@ -66,15 +67,22 @@ public class ACL_Servlet extends HttpServlet {
 		if (action.equals("edit")) {
 			
 			List<ACL_Dao> dacl = null;
+			Users_Dao user = null;
 			
 			ACL_Model modelObject = new ACL_Model();
+			Users_Model userObject = new Users_Model();
 			
 			try {
 				
 				dacl = modelObject.getOne(id);
+				user = userObject.getOne(id);
 			} 
 			catch (SQLException e) {
 
+				e.printStackTrace();
+			} 
+			catch (ParseException e) {
+			
 				e.printStackTrace();
 			}
 			
@@ -82,6 +90,7 @@ public class ACL_Servlet extends HttpServlet {
 			
 			request.setAttribute("user_id", id);
 			request.setAttribute("data", dacl);
+			request.setAttribute("user", user);
 		}
 		else {
 			
