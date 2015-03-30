@@ -34,12 +34,28 @@ public class Logins_Model {
 
 	private String getCondition() throws SQLException {
 		
-        String result = "agent LIKE '%" + filter + "%'" +
-                " OR user_ip LIKE '%" + filter + "%'" +
-                " OR login LIKE '%" + filter + "%'" +
-        		" OR password LIKE '%" + filter + "%'";
+		Excludes_Model modelObject = new Excludes_Model();
+		
+		List<String> excludes = modelObject.getActive();
 
-        return result;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("'NULL', ");
+		
+		for (String each: excludes) {
+
+			sb.append("'");
+			sb.append(each);
+			sb.append("', ");
+		}
+		
+        String result = "user_ip NOT IN (" + sb.toString().replaceAll(", $", "") + ")" +
+                        " AND (user_ip LIKE '%" + filter + "%'" +
+        		        " OR agent LIKE '%" + filter + "%'" +
+        		        " OR login LIKE '%" + filter + "%'" +
+        		        " OR password LIKE '%" + filter + "%')";
+
+		return result;
 	}
 
 	public int save(Users_Dao user) throws SQLException {

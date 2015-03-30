@@ -91,7 +91,6 @@ public class Excludes_Servlet extends HttpServlet {
 		}
 		
 		int result = 0;
-		int id = 0;
 		String visitor_ip = "";
 		Boolean active = true;
 		
@@ -154,7 +153,7 @@ public class Excludes_Servlet extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("/visitors");
+		response.sendRedirect("/admin");
 		
 		message.setMessage(action, result);
 		request = message.show();

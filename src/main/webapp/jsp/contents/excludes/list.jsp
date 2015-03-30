@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/visitors"><img alt="visitors" src="images/page_edit.png" title="Odwiedziny"></a> &nbsp; <a href="/admin"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
+<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/visitors"><img alt="visitors" src="images/globe.png" title="Odwiedziny"></a> &nbsp; <a href="/logins"><img alt="logins" src="images/key.png" title="Logowania"></a> &nbsp; <a href="/admin"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
 
 <p>
 
