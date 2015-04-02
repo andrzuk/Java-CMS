@@ -6,7 +6,14 @@
 	      <div class="container">
 	        <ul class="nav">
 			<c:forEach items="${navigator}" var="navi" varStatus="iterator">
-		        <li class="nav_item"><a href="<c:out value="${navi.link}" />" ><c:out value="${navi.caption}" /></a></li>
+			  <c:choose>
+			    <c:when test="${navi.id == current_category_id}">
+		          <li class="nav_item_selected"><a href="<c:out value="${navi.link}" />" ><c:out value="${navi.caption}" /></a></li>
+			    </c:when>
+			    <c:otherwise>
+		          <li class="nav_item"><a href="<c:out value="${navi.link}" />" ><c:out value="${navi.caption}" /></a></li>
+			    </c:otherwise>
+			  </c:choose>
 			</c:forEach>
 	        </ul>
 	      </div>

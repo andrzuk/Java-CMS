@@ -20,6 +20,7 @@
 			<span class="comment_nick"><img src="images/author.png" /><c:out value="${site.login}" /></span>
 			<span class="comments_count">Komentarzy: <b><c:out value="${comments}" /></b></span>
 			<section class="comment_text"><c:out value="${site.contents}" escapeXml="true" /></section>
+			<div class="continue"><a href="/page?id=<c:out value="${site.id}" />">Czytaj dalej...</a></div>
 			
 		</div>
 		

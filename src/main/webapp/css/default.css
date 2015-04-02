@@ -45,7 +45,8 @@ li { margin: 0.2em 0px; }
 nav.navbar > div.container { text-align: center; margin: 0px 20px; border-bottom: 1px solid #ccc; }
 ul.nav { padding: 0px; }
 ul.nav > li { display: inline; margin: 10px; font-size: 2.0em; font-style: italic; }
-ul.nav > li > a { color: #f30; }
+ul.nav > li.nav_item > a { color: #e30; }
+ul.nav > li.nav_item_selected > a { color: #f30; text-decoration: underline; }
 ul.nav > li > a:hover { color: #69c; text-decoration: underline; }
 
 article { margin: 20px; padding: 0px 5px; font-family: verdana; font-size: 1.2em; color: #444; text-align: justify; }
@@ -59,6 +60,9 @@ span.comments_count { color: #f30; font-size: 1.0em; padding-left: 5px; }
 section.comment_text { color: #444; font-size: 1.0em; font-style: italic; margin-top: 10px; }
 span.comment_date > img { vertical-align: middle; padding: 0px 5px 0px 0px; }
 span.comment_nick > img { vertical-align: middle; padding: 0px 5px 0px 10px; }
+div.continue { text-align: right; font-size: 1.0em; font-style: italic; margin-top: 0.5em; }
+div.continue > a { color: #c30; }
+div.continue > a:hover { color: #369; }
 
 div.TopRow { margin: 0px 20px 10px 20px; padding: 0px 10px 5px 10px; border-bottom: 1px solid #ccc; }
 div.TopRow > span#Logo { margin-right: 50px; }

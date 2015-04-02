@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+org.jboss.tools.openshift.ApplicationId=54d0b0d05973cae08000001c
+org.jboss.tools.openshift.ApplicationName=cms
+org.jboss.tools.openshift.Connection=https\://andrzuk%40gmail.com@
+org.jboss.tools.openshift.DeployFolder=webapps
+org.jboss.tools.openshift.Domain=jfrmwrk
+org.jboss.tools.openshift.RemoteName=origin

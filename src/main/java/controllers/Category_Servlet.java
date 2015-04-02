@@ -85,6 +85,7 @@ public class Category_Servlet extends HttpServlet {
 		
 		request.setAttribute("page", attributes);
 		request.setAttribute("navigator", categories);
+		request.setAttribute("current_category_id", id);
 		request.setAttribute("category", category);
 		request.setAttribute("articles", sites.size());
 		request.setAttribute("data", sites);

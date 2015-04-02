@@ -88,6 +88,7 @@ public class Page_Servlet extends HttpServlet {
 		
 		request.setAttribute("page", attributes);
 		request.setAttribute("navigator", categories);
+		request.setAttribute("current_category_id", site.getCategory_id());
 		request.setAttribute("site", site);
 		request.setAttribute("comments", comments);
 		request.setAttribute("count", count);
