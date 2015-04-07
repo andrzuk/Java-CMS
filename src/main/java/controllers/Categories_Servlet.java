@@ -208,7 +208,7 @@ public class Categories_Servlet extends HttpServlet {
 			Categories_Model modelObject = new Categories_Model();
 			
 			List<String> columns = Arrays.asList("id", "parent_id", "item_order", "caption", "link", "login", "modified");
-			List<String> widths = Arrays.asList("10%", "10%", "10%", "25%", "25%", "10%", "10%");
+			List<String> widths = Arrays.asList("10%", "10%", "10%", "20%", "30%", "10%", "10%");
 			List<String> aligns = Arrays.asList("left", "left", "left", "left", "left", "left", "center");
 			
 			Paginator paginator = new Paginator(request);

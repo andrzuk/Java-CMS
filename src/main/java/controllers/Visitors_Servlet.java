@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import checkers.ACL;
 import checkers.Page_Meta;
+import checkers.Parameters;
 import utilities.Paginator;
 import utilities.Sorting;
 import models.Visitors_Model;
@@ -45,6 +46,11 @@ public class Visitors_Servlet extends HttpServlet {
 			return;
 		}
 		
+		Parameters parameter = new Parameters(request);
+		
+		int id = parameter.getId();
+		String action = parameter.getAction();
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/admin_page.jsp");
 		
 		Map<String, String> attributes = new HashMap<String, String>();
@@ -53,44 +59,71 @@ public class Visitors_Servlet extends HttpServlet {
 		
 		attributes = pageObject.setPageMeta(attributes);
 		
-		List<String> columns = Arrays.asList("id", "visitor_ip", "host_name", "http_referer", "request_uri", "visited");
-		List<String> widths = Arrays.asList("10%", "15%", "20%", "30%", "15%", "10%");
-		List<String> aligns = Arrays.asList("left", "left", "left", "left", "left", "center");
-		
-		List<Visitors_Dao> visitors = null;
-		
-		Visitors_Model modelObject = new Visitors_Model();
-		
-		Paginator paginator = new Paginator(request);
-		Sorting sorting = new Sorting(request);
-		String filter = (String) request.getSession().getAttribute("search_text");
-		
-		try {
+		if (action.equals("view")) {
 			
-			modelObject.setFilter(filter);
-			paginator.setRows_count(modelObject.getCount());
-			request = paginator.getRequest();
-			sorting.setFields_list(columns, widths, aligns);
-			visitors = modelObject.getSegment(paginator, sorting);
-		} 
-		catch (SQLException e) {
+			Visitors_Dao visitor = null;
+			
+			Visitors_Model modelObject = new Visitors_Model();
+			
+			try {
+				
+				visitor = modelObject.getOne(id);
+			} 
+			catch (SQLException e) {
 
-			e.printStackTrace();
-		} 
-		catch (ParseException e) {
-		
-			e.printStackTrace();
+				e.printStackTrace();
+			} 
+			catch (ParseException e) {
+			
+				e.printStackTrace();
+			}
+			
+			attributes.put("action", action);
+			
+			request.setAttribute("visitor", visitor);
+		}
+		else {
+			
+			List<String> columns = Arrays.asList("id", "visitor_ip", "host_name", "http_referer", "request_uri", "visited");
+			List<String> widths = Arrays.asList("10%", "15%", "20%", "30%", "15%", "10%");
+			List<String> aligns = Arrays.asList("left", "left", "left", "left", "left", "center");
+			
+			List<Visitors_Dao> visitors = null;
+			
+			Visitors_Model modelObject = new Visitors_Model();
+			
+			Paginator paginator = new Paginator(request);
+			Sorting sorting = new Sorting(request);
+			String filter = (String) request.getSession().getAttribute("search_text");
+			
+			try {
+				
+				modelObject.setFilter(filter);
+				paginator.setRows_count(modelObject.getCount());
+				request = paginator.getRequest();
+				sorting.setFields_list(columns, widths, aligns);
+				visitors = modelObject.getSegment(paginator, sorting);
+			} 
+			catch (SQLException e) {
+
+				e.printStackTrace();
+			} 
+			catch (ParseException e) {
+			
+				e.printStackTrace();
+			}
+			
+			attributes.put("action", "list");
+
+			request.setAttribute("data", visitors);
+			request.setAttribute("sorting", sorting);
+			request.setAttribute("filter", filter);
 		}
 		
 		attributes.put("module", MODULE);
 		attributes.put("title", MODULE.toUpperCase());
-		attributes.put("action", "list");
 		attributes.put("logged", (String) request.getSession().getAttribute("user_login"));
 		request.setAttribute("page", attributes);
-		request.setAttribute("data", visitors);
-		request.setAttribute("sorting", sorting);
-		request.setAttribute("filter", filter);
-
 		request.setAttribute("message", request.getSession().getAttribute("message"));
 		request.getSession().removeAttribute("message");
 		

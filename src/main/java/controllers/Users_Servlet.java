@@ -168,7 +168,7 @@ public class Users_Servlet extends HttpServlet {
 			Users_Model modelObject = new Users_Model();
 			
 			List<String> columns = Arrays.asList("id", "first_name", "last_name", "email", "login", "status", "modified");
-			List<String> widths = Arrays.asList("10%", "15%", "20%", "20%", "15%", "10%", "10%");
+			List<String> widths = Arrays.asList("10%", "15%", "15%", "25%", "15%", "10%", "10%");
 			List<String> aligns = Arrays.asList("left", "left", "left", "left", "left", "left", "center");
 			
 			Paginator paginator = new Paginator(request);

@@ -99,8 +99,8 @@ public class ACL_Servlet extends HttpServlet {
 			ACL_Model modelObject = new ACL_Model();
 			
 			List<String> columns = Arrays.asList("id", "login", "email", "status", "functions");
-			List<String> widths = Arrays.asList("10%", "20%", "25%", "15%", "30%");
-			List<String> aligns = Arrays.asList("left", "left", "left", "center", "left");
+			List<String> widths = Arrays.asList("10%", "15%", "20%", "15%", "40%");
+			List<String> aligns = Arrays.asList("left", "left", "left", "left", "left");
 			
 			Paginator paginator = new Paginator(request);
 			Sorting sorting = new Sorting(request);

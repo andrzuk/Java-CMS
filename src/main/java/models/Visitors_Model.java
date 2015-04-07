@@ -203,4 +203,62 @@ public class Visitors_Model {
 		
 		return counter;
 	}
+	
+	public Visitors_Dao getOne(int id) throws SQLException, ParseException {
+
+		Visitors_Dao visitor = null;
+		
+		String referer = null;
+		String query = null;
+		InetAddress inet_address = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			
+			query = "SELECT *, visitor_ip AS host_name FROM visitors" +
+					" WHERE id = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, id);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				inet_address = InetAddress.getByName(rs.getString("visitor_ip"));
+				referer = rs.getString("http_referer");
+				
+				visitor = new Visitors_Dao();
+                
+                visitor.setId(rs.getInt("id"));
+                visitor.setVisitor_ip(rs.getString("visitor_ip"));
+                visitor.setHost_name(inet_address.getHostName());
+                visitor.setHttp_referer(referer);
+                visitor.setRequest_uri(rs.getString("request_uri"));
+                visitor.setVisited(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("visited")));
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		catch (UnknownHostException e) {
+		
+			e.printStackTrace();
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return visitor;
+	}
 }

@@ -7,7 +7,8 @@
 
 <table align="center" width="95%" cellpadding="5" cellspacing="0">
 
-	<c:set var="columns_count" value="6" />
+	<c:set var="columns_count" value="7" />
+	<c:set var="actions_count" value="1" />
 	
 	<jsp:include page="/jsp/templates/sort.jsp">
 		<jsp:param name="sorting" value="${sorting}" />
@@ -23,9 +24,10 @@
 	</jsp:include>
 	
 	<tr class="ColumnHeaders">
-		<c:forEach var="i" begin="0" end="${columns_count - 1}">
+		<c:forEach var="i" begin="0" end="${columns_count - actions_count - 1}">
 			<td width="<c:out value="${sorting.fields_widths[i]}" />" style="text-align: <c:out value="${sorting.fields_aligns[i]}" />;"><a href="/<c:out value="${page.module}" />?sort=<c:out value="${sorting.fields_names[i]}" />&order=<c:out value="${order}" />" class="<c:if test="${sorting.sort_field == sorting.fields_names[i]}">Ordered</c:if>"><c:out value="${sorting.fields_names[i]}" /></a><c:if test="${sorting.sort_field == sorting.fields_names[i]}">&nbsp;<img src="<c:out value="${image}" />" title="<c:out value="${title}" />" /></c:if></td>
 		</c:forEach>
+		<td class="Action" colspan="${actions_count}">Actions</td>
 	</tr>
 	
 	<c:forEach items="${data}" var="visitor" varStatus="iterator">
@@ -36,6 +38,7 @@
 			<td style="text-align: <c:out value="${sorting.fields_aligns[3]}" />;"><c:out value="${visitor.http_referer}" /></td>
 			<td style="text-align: <c:out value="${sorting.fields_aligns[4]}" />;"><c:out value="${visitor.request_uri}" /></td>
 			<td style="text-align: <c:out value="${sorting.fields_aligns[5]}" />;"><c:out value="${visitor.visited_short}" /></td>
+			<td class="Action"><a href="/<c:out value="${page.module}" />?action=view&id=<c:out value="${visitor.id}"/>"><img alt="view" src="images/view.png" title="Szczegóły"></a></td>
 		</tr>
 	</c:forEach>
 	
