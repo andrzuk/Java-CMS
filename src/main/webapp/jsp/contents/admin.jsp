@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/home"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
+<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
 
 <div id="AdminPanel">
 

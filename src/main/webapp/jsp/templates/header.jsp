@@ -3,8 +3,8 @@
 
 <div class="TopRow">
 	<span id="Logo">
-		<a href="/home">
-			<img src="gallery/images/java_logo.png" title="Home Page" alt="" />
+		<a href="/">
+			<img src="<c:out value="${page.logo_image}" />" title="Home Page" alt="" />
 		</a>
 	</span>
 	<span id="Logged">

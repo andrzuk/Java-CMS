@@ -6,9 +6,9 @@
   <link rel="shortcut icon" href="<c:out value="${page.main_favicon}" />" type="image/x-icon" />
   <meta name="description" content="<c:out value="${page.main_description}" />" />
   <meta name="keywords" content="<c:out value="${page.main_keywords}" />" />
-  <meta name="author" content="application logic & design: Andrzej Żukowski" />
-  <meta name="google-site-verification" content="-YwX1hsGJi30rLk1AsM3xlQ41iZN08yc18FdQ5SpNcU" />
-  <link rel="stylesheet" type="text/css" href="css/default.css" />
+  <meta name="author" content="<c:out value="${page.main_author}" />" />
+  <meta name="google-site-verification" content="<c:out value="${page.site_verification}" />" />
+  <link rel="stylesheet" type="text/css" href="<c:out value="${page.main_style}" />" />
   
   <c:if test="${not empty page.highlight_theme}">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/<c:out value="${page.highlight_theme}" />" />
@@ -19,6 +19,6 @@
   	  <title><c:out value="${page.main_title}" /></title>
     </c:when>
     <c:otherwise>
-      <title>Java EE Application on Servlets & JSP</title>
+      <title>Java Servlets Application</title>
     </c:otherwise>
   </c:choose> 

@@ -10,7 +10,7 @@
 <!-- created by Auto Sitemap Generator of Java CMS Application http://<c:out value="${base_url}" /> -->
 
 	<url>
-		<loc>http://cms-jfrmwrk.rhcloud.com/home</loc>
+		<loc>http://cms-jfrmwrk.rhcloud.com</loc>
 	</url>
 	<url>
 		<loc>http://cms-jfrmwrk.rhcloud.com/login</loc>

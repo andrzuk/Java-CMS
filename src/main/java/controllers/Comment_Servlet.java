@@ -50,7 +50,7 @@ public class Comment_Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("/home");
+		response.sendRedirect("/");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -133,7 +133,7 @@ public class Comment_Servlet extends HttpServlet {
 		}
 		else {
 			
-			response.sendRedirect("/home");
+			response.sendRedirect("/");
 		}
 		message.setMessage("comment", result);
 		request = message.show();

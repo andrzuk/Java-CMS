@@ -132,7 +132,7 @@ public class Message_Servlet extends HttpServlet {
 		}
 		else {
 			
-			response.sendRedirect("/home");
+			response.sendRedirect("/");
 		}
 		message.setMessage("user_message", result);
 		request = message.show();

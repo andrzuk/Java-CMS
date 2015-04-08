@@ -10,6 +10,6 @@ public class ErrorHandler extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.sendRedirect("/home");
+		response.sendRedirect("/");
 	}
 }
