@@ -14,11 +14,11 @@
 				<span class="Title">Edytuj kategorię</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${category.id}" /><input type="hidden" name="id" value="<c:out value="${category.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Parent:</td>
 			<td>
 				<select name="parent_id">
@@ -37,15 +37,15 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Caption:</td>
 			<td><input type="text" name="caption" value="<c:out value="${category.caption}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Link:</td>
 			<td><input type="text" name="link" value="<c:out value="${category.link}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Order:</td>
 			<td>
 				<select name="item_order">
@@ -64,7 +64,7 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visible:</td>
 			<td>
 				<c:choose>
@@ -81,11 +81,11 @@
 				</c:choose>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td><c:out value="${category.login}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${category.modified_short}" /></td>
 		</tr>

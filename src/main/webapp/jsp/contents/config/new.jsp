@@ -14,19 +14,19 @@
 				<span class="Title">Dodaj ustawienie</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Key Name:</td>
 			<td><input type="text" name="key_name"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Key Value:</td>
 			<td><textarea name="key_value" rows="10"></textarea></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Meaning:</td>
 			<td><input type="text" name="meaning"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Field Type:</td>
 			<td>
 				<select name="field_type">
@@ -36,7 +36,7 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Active:</td>
 			<td>
 				<input type="radio" id="option_1" name="active" value="active" checked="checked"> <label for="option_1">Tak</label>

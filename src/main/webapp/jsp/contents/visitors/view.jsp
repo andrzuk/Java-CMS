@@ -14,27 +14,27 @@
 				<span class="Title">Szczegóły odwiedzin</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${visitor.id}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visitor IP:</td>
 			<td><c:out value="${visitor.visitor_ip}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Host Name:</td>
 			<td><c:out value="${visitor.host_name}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>HTTP Referer:</td>
 			<td><c:out value="${visitor.http_referer}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Request URI:</td>
 			<td><c:out value="${visitor.request_uri}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visited:</td>
 			<td><c:out value="${visitor.visited_short}" /></td>
 		</tr>

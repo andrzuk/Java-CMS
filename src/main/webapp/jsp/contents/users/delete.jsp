@@ -14,27 +14,27 @@
 				<span class="Title">Usuń użytkownika</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${user.id}" /><input type="hidden" name="id" value="<c:out value="${user.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>First Name:</td>
 			<td><c:out value="${user.first_name}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Last Name:</td>
 			<td><c:out value="${user.last_name}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>E-mail:</td>
 			<td><c:out value="${user.email}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Login:</td>
 			<td><c:out value="${user.login}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Status:</td>
 			<td>
 				<c:if test="${user.status == 1}">Administrator</c:if>
@@ -42,14 +42,14 @@
 				<c:if test="${user.status == 3}">User</c:if>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Active:</td>
 			<td>
 				<c:if test="${user.active == 'true'}">Yes (normal)</c:if>
 				<c:if test="${user.active == 'false'}">No (locked)</c:if>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${user.modified_short}" /></td>
 		</tr>

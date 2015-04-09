@@ -14,19 +14,19 @@
 				<span class="Title">Edytuj komentarz</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${comment.id}" /><input type="hidden" name="id" value="<c:out value="${comment.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Title:</td>
 			<td><c:out value="${comment.title}" /><input type="hidden" name="page_id" value="<c:out value="${comment.page_id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Comment:</td>
 			<td><textarea name="comment" rows="10"><c:out value="${comment.comment}" /></textarea></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Accepted:</td>
 			<td>
 				<c:choose>
@@ -43,11 +43,11 @@
 				</c:choose>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Address IP:</td>
 			<td><c:out value="${comment.ip}" /><input type="hidden" name="ip" value="<c:out value="${comment.ip}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td>
 				<c:out value="${comment.nick}" /> ~ <a href="mailto:<c:out value="${comment.email}" />"><c:out value="${comment.email}" /></a>
@@ -55,7 +55,7 @@
 				<input type="hidden" name="email" value="<c:out value="${comment.email}" />">
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${comment.modified_short}" /></td>
 		</tr>

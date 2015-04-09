@@ -254,16 +254,17 @@ CREATE TABLE IF NOT EXISTS `visitors` (
 INSERT INTO `admin_functions` (`id`, `module`, `meaning`) VALUES
 (1, 'admin', 'Admin Panel'),
 (2, 'config', 'Konfiguracja'),
-(3, 'categories', 'Kategorie'),
-(4, 'pages', 'Podstrony'),
-(5, 'images', 'Galeria'),
-(6, 'users', 'Użytkownicy'),
-(7, 'acl', 'Access Control List'),
-(8, 'logins', 'Logowania'),
-(9, 'comments', 'Komentarze'),
-(10, 'messages', 'Wiadomości'),
-(11, 'visitors', 'Odwiedziny'),
-(12, 'excludes', 'Wykluczenia');
+(3, 'styles', 'Wygląd'),
+(4, 'categories', 'Kategorie'),
+(5, 'pages', 'Podstrony'),
+(6, 'images', 'Galeria'),
+(7, 'users', 'Użytkownicy'),
+(8, 'acl', 'Access Control List'),
+(9, 'logins', 'Logowania'),
+(10, 'comments', 'Komentarze'),
+(11, 'messages', 'Wiadomości'),
+(12, 'visitors', 'Odwiedziny'),
+(13, 'excludes', 'Wykluczenia');
 
 --
 -- Zrzut danych tabeli `configuration`
@@ -278,26 +279,27 @@ INSERT INTO `configuration` (`id`, `key_name`, `key_value`, `meaning`, `field_ty
 (6, 'main_footer', '&copy; 2015\r\n<a href="https://plus.google.com/113303165754486219878?rel=author" class="FooterLink" target="_blank">Andrzej Żukowski</a>\r\n▪\r\n<a href="http://mvc.net.pl" target="_blank">FineCMS</a>\r\n', 'footer strony', 2, 1, '2015-03-09 03:17:43'),
 (7, 'main_author', 'application logic & design: Andrzej Żukowski', 'autor logiki biznesowej i designu serwisu', 1, 1, '2015-03-16 05:54:17'),
 (8, 'main_style', 'css/default.css', 'głowny plik stylów strony', 1, 1, '2015-03-08 09:47:32'),
-(9, 'logo_image', 'images/java_logo.png', 'obrazek logo w nagłówku strony', 1, 1, '2015-02-25 05:41:35'),
-(10, 'site_verification', '-YwX1hsGJi30rLk1AsM3xlQ41iZN08yc18FdQ5SpNcU', 'kod weryfikacji strony w narzędziach webmastera', 1, 1, '2015-02-25 05:41:35'),
-(11, 'time_offset_active', 'true', 'przesunięcie czasowe daty serwera aktywne', 3, 1, '2015-03-11 10:53:25'),
-(12, 'time_offset_hours', '5', 'przesunięcie czasowe daty serwera w godzinach', 1, 1, '2015-03-11 10:38:55'),
-(13, 'date_year_first', 'true', 'format daty z rokiem na początku', 3, 1, '2015-03-12 05:16:42'),
-(14, 'description_words_comments', '20', 'liczba wyrazów w skróconym opisie na liście komentarzy', 1, 1, '2015-03-12 10:44:26'),
-(15, 'description_words_messages', '20', 'liczba wyrazów w skróconym opisie na liście wiadomości', 1, 1, '2015-03-12 05:21:12'),
-(16, 'description_words_pages', '100', 'liczba wyrazów w skróconym opisie na liście stron', 1, 1, '2015-03-04 04:56:12'),
-(17, 'description_words_search', '100', 'liczba wyrazów w skróconym opisie na liście znalezionych', 1, 1, '2015-03-04 06:27:58'),
-(18, 'http_referer_length', '64', 'maksymalna długość http_referer na liście visitors', 1, 1, '2015-03-23 10:41:53'),
-(19, 'preview_image_list_width', '100px', 'szerokość obrazków podglądu na liście', 1, 1, '2015-03-05 05:16:42'),
-(20, 'preview_image_list_height', '100px', 'wysokość obrazków podglądu na liście', 1, 1, '2015-03-05 05:16:33'),
-(21, 'code_highlight_theme', 'github.css', 'nazwa pliku stylu dla kolorowania składni kodu', 1, 1, '2015-03-13 06:41:15'),
-(22, 'send_message_report', 'false', 'czy wysyłać mailem raporty o wydarzeniach w serwisie', 3, 1, '2015-03-12 07:52:17'),
-(23, 'email_admin_address', 'andrzuk@gmail.com', 'adres e-mail administratora serwisu', 1, 1, '2015-03-03 05:29:12'),
-(24, 'email_sender_address', 'cms_mailer@gazeta.pl', 'adres konta e-mailowego serwisu', 1, 1, '2015-03-03 04:45:13'),
-(25, 'email_sender_host', 'smtp.poczta.gazeta.pl', 'host serwera pocztowego', 1, 1, '2015-03-03 04:51:44'),
-(26, 'email_sender_user', 'cms_mailer', 'login konta pocztowego nadawcy', 1, 1, '2015-03-03 04:44:32'),
-(27, 'email_sender_password', 'pwd_java_2015', 'hasło konta pocztowego nadawcy', 1, 1, '2015-03-03 04:45:49'),
-(28, 'email_subject', 'Mail Manager - New comment was received', 'temat maila raportującego nadesłanie komantarza', 1, 1, '2015-03-03 04:27:07');
+(9, 'custom_style', 'custom.css', 'dodatkowy plik stylów strony', 1, 1, '2015-03-08 09:47:32'),
+(10, 'logo_image', 'images/java_logo.png', 'obrazek logo w nagłówku strony', 1, 1, '2015-02-25 05:41:35'),
+(11, 'site_verification', '-YwX1hsGJi30rLk1AsM3xlQ41iZN08yc18FdQ5SpNcU', 'kod weryfikacji strony w narzędziach webmastera', 1, 1, '2015-02-25 05:41:35'),
+(12, 'time_offset_active', 'true', 'przesunięcie czasowe daty serwera aktywne', 3, 1, '2015-03-11 10:53:25'),
+(13, 'time_offset_hours', '5', 'przesunięcie czasowe daty serwera w godzinach', 1, 1, '2015-03-11 10:38:55'),
+(14, 'date_year_first', 'true', 'format daty z rokiem na początku', 3, 1, '2015-03-12 05:16:42'),
+(15, 'description_words_comments', '20', 'liczba wyrazów w skróconym opisie na liście komentarzy', 1, 1, '2015-03-12 10:44:26'),
+(16, 'description_words_messages', '20', 'liczba wyrazów w skróconym opisie na liście wiadomości', 1, 1, '2015-03-12 05:21:12'),
+(17, 'description_words_pages', '100', 'liczba wyrazów w skróconym opisie na liście stron', 1, 1, '2015-03-04 04:56:12'),
+(18, 'description_words_search', '100', 'liczba wyrazów w skróconym opisie na liście znalezionych', 1, 1, '2015-03-04 06:27:58'),
+(19, 'http_referer_length', '64', 'maksymalna długość http_referer na liście visitors', 1, 1, '2015-03-23 10:41:53'),
+(20, 'preview_image_list_width', '100px', 'szerokość obrazków podglądu na liście', 1, 1, '2015-03-05 05:16:42'),
+(21, 'preview_image_list_height', '100px', 'wysokość obrazków podglądu na liście', 1, 1, '2015-03-05 05:16:33'),
+(22, 'code_highlight_theme', 'github.css', 'nazwa pliku stylu dla kolorowania składni kodu', 1, 1, '2015-03-13 06:41:15'),
+(23, 'send_message_report', 'false', 'czy wysyłać mailem raporty o wydarzeniach w serwisie', 3, 1, '2015-03-12 07:52:17'),
+(24, 'email_admin_address', 'andrzuk@gmail.com', 'adres e-mail administratora serwisu', 1, 1, '2015-03-03 05:29:12'),
+(25, 'email_sender_address', 'cms_mailer@gazeta.pl', 'adres konta e-mailowego serwisu', 1, 1, '2015-03-03 04:45:13'),
+(26, 'email_sender_host', 'smtp.poczta.gazeta.pl', 'host serwera pocztowego', 1, 1, '2015-03-03 04:51:44'),
+(27, 'email_sender_user', 'cms_mailer', 'login konta pocztowego nadawcy', 1, 1, '2015-03-03 04:44:32'),
+(28, 'email_sender_password', 'pwd_java_2015', 'hasło konta pocztowego nadawcy', 1, 1, '2015-03-03 04:45:49'),
+(29, 'email_subject', 'Mail Manager - New comment was received', 'temat maila raportującego nadesłanie komantarza', 1, 1, '2015-03-03 04:27:07');
 
 --
 -- Zrzut danych tabeli `users`
@@ -322,7 +324,8 @@ INSERT INTO `user_roles` (`id`, `user_id`, `function_id`, `access`) VALUES
 (9, 1, 9, 1),
 (10, 1, 10, 1),
 (11, 1, 11, 1),
-(12, 1, 12, 1);
+(12, 1, 12, 1),
+(13, 1, 13, 1);
 
 --
 -- Zrzut danych tabeli `categories`

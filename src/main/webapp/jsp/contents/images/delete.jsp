@@ -15,28 +15,28 @@
 				<span class="Title">Usuń obrazek</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${image.id}" /><input type="hidden" name="id" value="<c:out value="${image.id}" />"></td>
 		</tr>
-		<tr class="preview">
+		<tr class="FormRow preview">
 			<td>Preview:</td>
 			<td><img src="upload/<c:out value="${image.file_name}" />" width="100%" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>File Name:</td>
 			<td><c:out value="${image.file_name}" /></td>
 		</tr>
 		<fmt:parseNumber var="file_size_int" integerOnly="true" type="number" value="${image.file_size / 1024}" />
-		<tr>
+		<tr class="FormRow">
 			<td>File Size:</td>
 			<td><c:out value="${file_size_int} KB" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td><c:out value="${image.login}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${image.modified_short}" /></td>
 		</tr>

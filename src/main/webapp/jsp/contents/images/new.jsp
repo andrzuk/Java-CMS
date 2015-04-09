@@ -14,7 +14,7 @@
 				<span class="Title">Dodaj obrazek</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Get Picture:</td>
 			<td><input type="file" name="uploadFile" /></td>
 		</tr>

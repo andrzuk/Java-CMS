@@ -14,26 +14,26 @@
 				<span class="Title">Usuń komunikat</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${user_message.id}" /><input type="hidden" name="id" value="<c:out value="${user_message.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Message:</td>
 			<td><c:out value="${user_message.message}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visible:</td>
 			<td>
 				<c:if test="${user_message.visible == 'true'}">Yes (normal)</c:if>
 				<c:if test="${user_message.visible == 'false'}">No (locked)</c:if>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td><c:out value="${user_message.nick}" /> ~ <a href="mailto:<c:out value="${user_message.email}" />"><c:out value="${user_message.email}" /></a></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${user_message.modified_short}" /></td>
 		</tr>

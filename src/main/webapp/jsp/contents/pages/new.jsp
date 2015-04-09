@@ -14,12 +14,12 @@
 				<span class="Title">Dodaj stronę</span>
 			</td>
 		</tr>
-			<input type="hidden" name="type" value="standard" />
-		<tr>
+		<input type="hidden" name="type" value="standard" />
+		<tr class="FormRow">
 			<td>Title:</td>
 			<td><input type="text" name="title"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Category:</td>
 			<td>
 				<select name="category_id">
@@ -29,15 +29,15 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td width="10%">Contents:</td>
 			<td width="90%"><textarea name="contents" rows="20"></textarea></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Description:</td>
 			<td><input type="text" name="description"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visible:</td>
 			<td>
 				<input type="radio" id="option_1" name="visible" value="active" checked="checked"> <label for="option_1">Tak</label>

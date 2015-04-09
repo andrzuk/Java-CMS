@@ -14,15 +14,15 @@
 				<span class="Title">Edytuj komunikat</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${user_message.id}" /><input type="hidden" name="id" value="<c:out value="${user_message.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Comment:</td>
 			<td><textarea name="message" rows="10"><c:out value="${user_message.message}" /></textarea></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Accepted:</td>
 			<td>
 				<c:choose>
@@ -39,11 +39,11 @@
 				</c:choose>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Address IP:</td>
 			<td><c:out value="${user_message.ip}" /><input type="hidden" name="ip" value="<c:out value="${user_message.ip}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td>
 				<c:out value="${user_message.nick}" /> ~ <a href="mailto:<c:out value="${user_message.email}" />"><c:out value="${user_message.email}" /></a>
@@ -51,7 +51,7 @@
 				<input type="hidden" name="email" value="<c:out value="${user_message.email}" />">
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${user_message.modified_short}" /></td>
 		</tr>

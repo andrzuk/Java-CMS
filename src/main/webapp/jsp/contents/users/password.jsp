@@ -14,19 +14,19 @@
 				<span class="Title">Ustaw hasło</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${user.id}" /><input type="hidden" name="id" value="<c:out value="${user.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Login:</td>
 			<td><c:out value="${user.login}" /><input type="hidden" name="login" value="<c:out value="${user.login}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>New password:</td>
 			<td><input type="password" name="password" value="" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Repeat password:</td>
 			<td><input type="password" name="repeat" value="" /></td>
 		</tr>

@@ -9,6 +9,7 @@
   <meta name="author" content="<c:out value="${page.main_author}" />" />
   <meta name="google-site-verification" content="<c:out value="${page.site_verification}" />" />
   <link rel="stylesheet" type="text/css" href="<c:out value="${page.main_style}" />" />
+  <link rel="stylesheet" type="text/css" href="/custom/<c:out value="${page.custom_style}" />" />
   
   <c:if test="${not empty page.highlight_theme}">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/<c:out value="${page.highlight_theme}" />" />

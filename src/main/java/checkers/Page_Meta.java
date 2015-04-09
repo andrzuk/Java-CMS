@@ -16,6 +16,7 @@ public class Page_Meta {
 	private String main_author;
 	private String logo_image;
 	private String main_style;
+	private String custom_style;
 	private String site_verification;
 	
 	public Page_Meta() {
@@ -32,6 +33,7 @@ public class Page_Meta {
 			setMain_author(configObject.getConfig("main_author"));
 			setLogo_image(configObject.getConfig("logo_image"));
 			setMain_style(configObject.getConfig("main_style"));
+			setCustom_style(configObject.getConfig("custom_style"));
 			setSite_verification(configObject.getConfig("site_verification"));
 		} 
 		catch (SQLException e) {
@@ -54,6 +56,7 @@ public class Page_Meta {
 		attributes.put("main_author", getMain_author());
 		attributes.put("logo_image", getLogo_image());
 		attributes.put("main_style", getMain_style());
+		attributes.put("custom_style", getCustom_style());
 		attributes.put("site_verification", getSite_verification());
 		
 		return attributes;
@@ -147,5 +150,15 @@ public class Page_Meta {
 	public void setSite_verification(String site_verification) {
 	
 		this.site_verification = site_verification;
+	}
+
+	public String getCustom_style() {
+		
+		return custom_style;
+	}
+
+	public void setCustom_style(String custom_style) {
+		
+		this.custom_style = custom_style;
 	}
 }

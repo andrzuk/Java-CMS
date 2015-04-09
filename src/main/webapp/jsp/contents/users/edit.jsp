@@ -14,29 +14,29 @@
 				<span class="Title">Edytuj użytkownika</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${user.id}" /><input type="hidden" name="id" value="<c:out value="${user.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>First Name:</td>
 			<td><input type="text" name="first_name" value="<c:out value="${user.first_name}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Last Name:</td>
 			<td><input type="text" name="last_name" value="<c:out value="${user.last_name}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>E-mail:</td>
 			<td><input type="text" name="email" value="<c:out value="${user.email}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Login:</td>
 			<td><input type="text" name="login" value="<c:out value="${user.login}" />"></td>
 		</tr>
 		<c:choose>
 			<c:when test="${operator == 1}">
-				<tr>
+				<tr class="FormRow">
 					<td>Status:</td>
 					<td>
 						<select name="status">
@@ -51,7 +51,7 @@
 				<input type="hidden" name="status" value="<c:out value="${user.status}" />" />
 			</c:otherwise>
 		</c:choose>
-		<tr>
+		<tr class="FormRow">
 			<td>Active:</td>
 			<td>
 				<c:choose>
@@ -68,7 +68,7 @@
 				</c:choose>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${user.modified_short}" /></td>
 		</tr>

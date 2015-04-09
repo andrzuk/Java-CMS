@@ -14,25 +14,25 @@
 				<span class="Title">Dodaj użytkownika</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>First Name:</td>
 			<td><input type="text" name="first_name"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Last Name:</td>
 			<td><input type="text" name="last_name"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>E-mail:</td>
 			<td><input type="text" name="email"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Login:</td>
 			<td><input type="text" name="login"></td>
 		</tr>
 		<c:choose>
 			<c:when test="${operator == 1}">
-				<tr>
+				<tr class="FormRow">
 					<td>Status:</td>
 					<td>
 						<select name="status">
@@ -47,7 +47,7 @@
 				<input type="hidden" name="status" value="3" />
 			</c:otherwise>
 		</c:choose>
-		<tr>
+		<tr class="FormRow">
 			<td>Active:</td>
 			<td>
 				<input type="radio" id="option_1" name="active" value="active" checked="checked"> <label for="option_1">Tak</label>

@@ -13,15 +13,15 @@
 			<span class="Title">Edytuj ACL</span>
 		</td>
 	</tr>
-	<tr>
+	<tr class="FormRow">
 		<td>Login:</td>
 		<td colspan="2"><c:out value="${user.login}" /></td>
 	</tr>
-	<tr>
+	<tr class="FormRow">
 		<td>Name:</td>
 		<td colspan="2"><c:out value="${user.first_name}" /> <c:out value="${user.last_name}" /></td>
 	</tr>
-	<tr>
+	<tr class="FormRow">
 		<td>Status:</td>
 		<td colspan="2">
 			<c:if test="${user.status == 1}">Admin</c:if>

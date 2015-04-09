@@ -38,7 +38,7 @@
 				</td>
 			</tr>
 		</c:forEach>
-		<tr>
+		<tr class="FormRow">
 			<td><input type="text" value="" name="ip_new" /></td>
 			<td>
 				<input type="radio" id="option_new_1" name="ac_new" value="1" checked="checked"> <label for="option_new_1">Tak</label>

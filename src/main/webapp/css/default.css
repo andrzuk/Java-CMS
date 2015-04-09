@@ -11,9 +11,9 @@ input[type="text"].Goto { width: 50px; text-align: center; }
 select.PageLines { width: 60px; }
 table { border: 1px solid #999; }
 td { border: 0px dotted #fff; padding: 1px 5px; }
-tr.Dialog > td { padding: 15px; }
-tr.Up > td { padding: 15px 10px 0px 10px; }
-tr.Down > td { padding: 0px 10px 15px 10px; }
+tr.Dialog > td { padding: 15px; background-color: #eef; }
+tr.Up > td { padding: 15px 10px 0px 10px; background-color: #eef; }
+tr.Down > td { padding: 0px 10px 15px 10px; background-color: #eef; }
 tr.active > td { color: #333; }
 tr.passive > td { color: #a00; }
 tr.index, tr.contact > td { font-weight: bold; }
@@ -40,6 +40,7 @@ tr.Noresults > td { text-align: center; color: #c00; background-color: #fca; fon
 tr.odd > td { background-color: #d0d9df; font-size: 1.0em; }
 tr.even > td { background-color: #e0e9ef; font-size: 1.0em; }
 tr.preview > td > img { margin: 1px; border: 1px solid #999; }
+tr.FormRow > td { background-color: #eef; }
 li { margin: 0.2em 0px; }
 
 nav.navbar > div.container { text-align: center; margin: 0px 20px; border-bottom: 1px solid #ccc; }

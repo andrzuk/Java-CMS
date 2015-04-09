@@ -14,15 +14,15 @@
 				<span class="Title">Edytuj ustawienie</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${config.id}" /><input type="hidden" name="id" value="<c:out value="${config.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Key Name:</td>
 			<td><input type="text" name="key_name" value="<c:out value="${config.key_name}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Key Value:</td>
 			<td>
 				<c:choose>
@@ -52,11 +52,11 @@
 				</c:choose>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Meaning:</td>
 			<td><input type="text" name="meaning" value="<c:out value="${config.meaning}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Field Type:</td>
 			<td>
 				<select name="field_type">
@@ -66,7 +66,7 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Active:</td>
 			<td>
 				<c:choose>
@@ -83,7 +83,7 @@
 				</c:choose>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${config.modified_short}" /></td>
 		</tr>

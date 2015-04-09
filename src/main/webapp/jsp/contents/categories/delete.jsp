@@ -14,30 +14,30 @@
 				<span class="Title">Usuń kategorię</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${category.id}" /><input type="hidden" name="id" value="<c:out value="${category.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Caption:</td>
 			<td><c:out value="${category.caption}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Link:</td>
 			<td><c:out value="${category.link}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visible:</td>
 			<td>
 				<c:if test="${category.visible == 'true'}">Yes (normal)</c:if>
 				<c:if test="${category.visible == 'false'}">No (locked)</c:if>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td><c:out value="${category.login}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${category.modified_short}" /></td>
 		</tr>

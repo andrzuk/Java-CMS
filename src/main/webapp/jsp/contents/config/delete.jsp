@@ -14,30 +14,30 @@
 				<span class="Title">Usuń ustawienie</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${config.id}" /><input type="hidden" name="id" value="<c:out value="${config.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Key Name:</td>
 			<td><c:out value="${config.key_name}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Key Value:</td>
 			<td><c:out value="${config.key_value}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Meaning:</td>
 			<td><c:out value="${config.meaning}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Active:</td>
 			<td>
 				<c:if test="${config.active == 'true'}">Yes (normal)</c:if>
 				<c:if test="${config.active == 'false'}">No (locked)</c:if>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${config.modified_short}" /></td>
 		</tr>

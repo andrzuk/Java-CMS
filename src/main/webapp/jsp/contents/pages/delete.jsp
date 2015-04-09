@@ -14,30 +14,30 @@
 				<span class="Title">Usuń stronę</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${site.id}" /><input type="hidden" name="id" value="<c:out value="${site.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Title:</td>
 			<td><c:out value="${site.title}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Description:</td>
 			<td><c:out value="${site.description}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visible:</td>
 			<td>
 				<c:if test="${site.visible == 'true'}">Yes (normal)</c:if>
 				<c:if test="${site.visible == 'false'}">No (locked)</c:if>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td><c:out value="${site.login}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${site.modified_short}" /></td>
 		</tr>

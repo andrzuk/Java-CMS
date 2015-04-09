@@ -14,30 +14,30 @@
 				<span class="Title">Usuń komentarz</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Id:</td>
 			<td><c:out value="${comment.id}" /><input type="hidden" name="id" value="<c:out value="${comment.id}" />"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Title:</td>
 			<td><c:out value="${comment.title}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Comment:</td>
 			<td><c:out value="${comment.comment}" /></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visible:</td>
 			<td>
 				<c:if test="${comment.visible == 'true'}">Yes (normal)</c:if>
 				<c:if test="${comment.visible == 'false'}">No (locked)</c:if>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Author:</td>
 			<td><c:out value="${comment.nick}" /> ~ <a href="mailto:<c:out value="${comment.email}" />"><c:out value="${comment.email}" /></a></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Modified:</td>
 			<td><c:out value="${comment.modified_short}" /></td>
 		</tr>

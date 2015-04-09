@@ -14,7 +14,7 @@
 				<span class="Title">Dodaj kategorię</span>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Parent:</td>
 			<td>
 				<select name="parent_id">
@@ -25,15 +25,15 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Caption:</td>
 			<td><input type="text" name="caption"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Link:</td>
 			<td><input type="text" name="link" value="/category?id=(auto)"></td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Order:</td>
 			<td>
 				<select name="item_order">
@@ -44,7 +44,7 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="FormRow">
 			<td>Visible:</td>
 			<td>
 				<input type="radio" id="option_1" name="visible" value="active" checked="checked"> <label for="option_1">Tak</label>
