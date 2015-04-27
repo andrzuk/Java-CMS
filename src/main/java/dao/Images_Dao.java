@@ -11,6 +11,8 @@ public class Images_Dao {
 	private int id;
 	private String file_name;
 	private long file_size;
+	private long width;
+	private long height;
 	private int author_id;
 	private String login;
 	private Date modified;
@@ -88,5 +90,25 @@ public class Images_Dao {
 	public void setFile_size(long file_size) {
 		
 		this.file_size = file_size;
+	}
+
+	public long getWidth() {
+		
+		return width;
+	}
+
+	public void setWidth(long width) {
+		
+		this.width = width;
+	}
+
+	public long getHeight() {
+		
+		return height;
+	}
+
+	public void setHeight(long height) {
+		
+		this.height = height;
 	}
 }

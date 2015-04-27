@@ -1,5 +1,7 @@
 package controllers;
 
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -63,6 +65,11 @@ public class Images_Servlet extends HttpServlet {
 	        InputStream is = request.getPart(part.getName()).getInputStream();
 	        long fileSize = request.getPart(part.getName()).getSize();
 	        String fileName = getFileName(part);
+	        if (fileName != null) {	        	
+		        fileName = fileName.replaceAll(" ", "_");
+		        image.setFile_name(fileName);
+				image.setFile_size(fileSize);
+	        }
 	        FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
 	        byte[] bytes = new byte[BUFFER_LENGTH];
 	        int read = 0;
@@ -72,14 +79,20 @@ public class Images_Servlet extends HttpServlet {
 	        os.flush();
 	        is.close();
 	        os.close();
-			if (fileName != null) { 
-				
-				image.setFile_name(fileName);
-				image.setFile_size(fileSize);
-			}
-			image.setAuthor_id((Integer) request.getSession().getAttribute("user_id"));
 	    }
-	    return image;
+	    for (Part part : request.getParts()) {
+	        InputStream is = request.getPart(part.getName()).getInputStream();
+	        BufferedImage img = ImageIO.read(is);
+			if (img != null) { 
+				
+				image.setWidth(img.getWidth());
+				image.setHeight(img.getHeight());
+			}
+	        is.close();
+	    }
+		image.setAuthor_id((Integer) request.getSession().getAttribute("user_id"));
+
+		return image;
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -157,15 +170,49 @@ public class Images_Servlet extends HttpServlet {
 			
 			request.setAttribute("image", image);
 		}
+		else if (action.equals("import")) {
+			
+			Images_Dao image = null;
+			
+			Images_Model modelObject = new Images_Model();
+			
+			try {
+				
+				image = modelObject.getOne(id);
+			} 
+			catch (SQLException e) {
+
+				e.printStackTrace();
+			} 
+			catch (ParseException e) {
+			
+				e.printStackTrace();
+			}
+
+			String imgTag = "<!-- Import Image -->\n<div class=\"dc\">\n<img class=\"dynamic\" src=\"upload/"
+					+ image.getFile_name() + "\" width=\"" + image.getWidth() + "\" height=\""
+					+ image.getHeight() + "\" onload=\"showImage(this);\">\n</div>\n\n";
+			
+			request.getSession().setAttribute("import_image_tag", imgTag);
+
+			Messages message = new Messages(request);
+
+			response.sendRedirect("/pages");
+
+			message.setMessage(action, 1);
+			request = message.show();
+
+			return;
+		}
 		else {
 			
 			List<Images_Dao> images = null;
 			
 			Images_Model modelObject = new Images_Model();
 			
-			List<String> columns = Arrays.asList("id", "preview", "file_name", "file_size", "login", "modified");
-			List<String> widths = Arrays.asList("10%", "25%", "30%", "15%", "10%", "10%");
-			List<String> aligns = Arrays.asList("left", "left", "left", "left", "left", "center");
+			List<String> columns = Arrays.asList("id", "preview", "file_name", "file_size", "width", "height", "login", "modified");
+			List<String> widths = Arrays.asList("10%", "20%", "20%", "10%", "10%", "10%", "10%", "10%");
+			List<String> aligns = Arrays.asList("left", "left", "left", "left", "left", "left", "left", "center");
 			
 			Paginator paginator = new Paginator(request);
 			Sorting sorting = new Sorting(request);

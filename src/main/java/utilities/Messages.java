@@ -113,6 +113,17 @@ public class Messages {
 				message.setMessage(type.ERROR, "Twoja wiadomość nie została wysłana.");
 			}
 		}
+		else if (action.equals("import")) {
+			
+			if (result > 0) {
+				
+				message.setMessage(type.INFORMATION, "Znacznik obrazka został skopiowany do schowka.");
+			}
+			else {
+				
+				message.setMessage(type.ERROR, "Znacznik obrazka nie został skopiowany.");
+			}
+		}
 		else {
 			
 			message.setMessage(type.QUESTION, "Akcja nie obsłużona. Co miałeś na myśli?");

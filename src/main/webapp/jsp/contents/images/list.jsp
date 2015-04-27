@@ -8,8 +8,8 @@
 
 <table align="center" width="95%" cellpadding="5" cellspacing="0">
 
-	<c:set var="columns_count" value="8" />
-	<c:set var="actions_count" value="2" />
+	<c:set var="columns_count" value="11" />
+	<c:set var="actions_count" value="3" />
 	
 	<jsp:include page="/jsp/templates/sort.jsp">
 		<jsp:param name="sorting" value="${sorting}" />
@@ -36,12 +36,15 @@
 		<fmt:parseNumber var="file_size_int" integerOnly="true" type="number" value="${image.file_size / 1024}" />
 		<tr class="${iterator.index % 2 == 0 ? 'even' : 'odd'}">
 			<td style="text-align: <c:out value="${sorting.fields_aligns[0]}" />;"><c:out value="${image.id}" /></td>
-			<td style="text-align: <c:out value="${sorting.fields_aligns[1]}" />;"><a href="/<c:out value="${page.module}" />?action=preview&id=<c:out value="${image.id}"/>"><img src="upload/<c:out value="${image.file_name}" />" width="${preview.width}" height="${preview.height}" title="Podgląd" alt="" /></a></td>
+			<td style="text-align: <c:out value="${sorting.fields_aligns[1]}" />;"><a href="/<c:out value="${page.module}" />?action=preview&id=<c:out value="${image.id}"/>"><div class="dc"><img class="dynamic" src="upload/<c:out value="${image.file_name}" />" width="${preview.width}" height="${preview.height}" onload="showImage(this);" title="Podgląd" alt="" /></div></a></td>
 			<td style="text-align: <c:out value="${sorting.fields_aligns[2]}" />;"><c:out value="${image.file_name}" /></td>
 			<td style="text-align: <c:out value="${sorting.fields_aligns[3]}" />;"><c:out value="${file_size_int} KB" /></td>
-			<td style="text-align: <c:out value="${sorting.fields_aligns[4]}" />;"><c:out value="${image.login}" /></td>
-			<td style="text-align: <c:out value="${sorting.fields_aligns[5]}" />;"><c:out value="${image.modified_short}" /></td>
-			<td class="Action"><a href="/upload/<c:out value="${image.file_name}"/>"><img alt="edit" src="images/save.png" title="Pobierz"></a></td>
+			<td style="text-align: <c:out value="${sorting.fields_aligns[4]}" />;"><c:out value="${image.width} px" /></td>
+			<td style="text-align: <c:out value="${sorting.fields_aligns[5]}" />;"><c:out value="${image.height} px" /></td>
+			<td style="text-align: <c:out value="${sorting.fields_aligns[6]}" />;"><c:out value="${image.login}" /></td>
+			<td style="text-align: <c:out value="${sorting.fields_aligns[7]}" />;"><c:out value="${image.modified_short}" /></td>
+			<td class="Action"><a href="/upload/<c:out value="${image.file_name}"/>"><img alt="download" src="images/save.png" title="Pobierz"></a></td>
+			<td class="Action"><a href="/<c:out value="${page.module}" />?action=import&id=<c:out value="${image.id}"/>"><img alt="import" src="images/import.png" title="Importuj"></a></td>
 			<td class="Action"><a href="/<c:out value="${page.module}" />?action=delete&id=<c:out value="${image.id}"/>"><img alt="delete" src="images/trash.png" title="Usuń"></a></td>
 		</tr>
 	</c:forEach>

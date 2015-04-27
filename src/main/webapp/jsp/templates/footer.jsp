@@ -10,3 +10,5 @@
   <script src="assets/js/language/generic.js"></script>
   <script src="assets/js/language/java.js"></script>
 </c:if>
+	
+<script src="js/custom.js"></script>

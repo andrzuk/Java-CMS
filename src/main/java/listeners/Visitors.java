@@ -23,6 +23,7 @@ public class Visitors implements ServletRequestListener {
 		excludes = new ArrayList<String>();
 		excludes.add(".png");
 		excludes.add(".jpg");
+		excludes.add(".gif");
 		excludes.add(".ico");
 		excludes.add(".css");
 		excludes.add(".js");

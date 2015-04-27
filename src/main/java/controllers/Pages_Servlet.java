@@ -111,6 +111,12 @@ public class Pages_Servlet extends HttpServlet {
 				
 				site = modelObject.getOne(id);
 				categories = importObject.getAll();
+				
+				if (request.getSession().getAttribute("import_image_tag") != null) {
+					
+					site.setContents(request.getSession().getAttribute("import_image_tag") + site.getContents());					
+					request.getSession().removeAttribute("import_image_tag");
+				}
 			} 
 			catch (SQLException e) {
 

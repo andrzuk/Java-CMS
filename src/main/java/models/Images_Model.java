@@ -34,6 +34,8 @@ public class Images_Model {
         image.setId(rs.getInt("id"));
         image.setFile_name(rs.getString("file_name"));
         image.setFile_size(rs.getLong("file_size"));
+        image.setWidth(rs.getInt("width"));
+        image.setHeight(rs.getInt("height"));
         image.setAuthor_id(rs.getInt("author_id"));
         image.setLogin(rs.getString("login"));
         image.setModified(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("modified")));
@@ -194,14 +196,16 @@ public class Images_Model {
 		try {
 			
 			query = "INSERT INTO " + TABLE +
-					" (id, file_name, file_size, author_id, modified) VALUES" +
-					" (NULL, ?, ?, ?, NOW())";
+					" (id, file_name, file_size, width, height, author_id, modified) VALUES" +
+					" (NULL, ?, ?, ?, ?, ?, NOW())";
 
 			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
 			
 			preparedStatement.setString(1, image.getFile_name());
 			preparedStatement.setLong(2,  image.getFile_size());
-			preparedStatement.setInt(3, image.getAuthor_id());
+			preparedStatement.setLong(3,  image.getWidth());
+			preparedStatement.setLong(4,  image.getHeight());
+			preparedStatement.setInt(5, image.getAuthor_id());
 
 			result = preparedStatement.executeUpdate();
 		} 

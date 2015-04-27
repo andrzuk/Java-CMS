@@ -44,7 +44,7 @@ tr.FormRow > td { background-color: #eef; }
 li { margin: 0.2em 0px; }
 
 nav.navbar > div.container { text-align: center; margin: 0px 20px; border-bottom: 1px solid #ccc; }
-ul.nav { padding: 0px; }
+ul.nav { padding: 0px; display: inline-flex; }
 ul.nav > li { display: inline; margin: 10px; font-size: 2.0em; font-style: italic; }
 ul.nav > li.nav_item > a { color: #e30; }
 ul.nav > li.nav_item_selected > a { color: #f30; text-decoration: underline; }
@@ -101,3 +101,11 @@ span.Separate { font-size: 1.5em; color: #aaa; font-weight: normal; }
 span.All { font-size: 2.0em; color: #090; }
 span.Last { font-size: 1.0em; color: #666; }
 
+img.dynamic { visibility: hidden; vertical-align: middle; }
+img.left { float: left; padding: 0px 20px 0px 0px; } 
+img.right { float: right; padding: 0px 0px 0px 20px; } 
+
+div.dc { border: 1px solid #ddd; padding: 1px; position: relative; display: inline-block; }
+div.loading { position: absolute; left: 50%; top: 50%; }
+div.left { float: left; margin: 5px 20px 5px 0px; } 
+div.right { float: right; margin: 5px 0px 5px 20px; } 

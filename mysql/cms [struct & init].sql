@@ -128,6 +128,8 @@ CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
   `file_size` int(11) NOT NULL,
+  `width` int(11) NOT NULL,
+  `height` int(11) NOT NULL,
   `author_id` int(11) unsigned NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),

@@ -21,7 +21,11 @@
 		</tr>
 		<tr class="FormRow preview">
 			<td>Preview:</td>
-			<td><img src="upload/<c:out value="${image.file_name}" />" width="100%" /></td>
+			<td>
+				<div class="dc">
+					<img class="dynamic" src="upload/<c:out value="${image.file_name}" />" width="300" height="200" onload="showImage(this);" />
+				</div>
+			</td>
 		</tr>
 		<tr class="FormRow">
 			<td>File Name:</td>

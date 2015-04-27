@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/<c:out value="${page.module}" />"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
+<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/<c:out value="${page.module}" />?action=import&id=<c:out value="${image.id}"/>"><img alt="import" src="images/import.png" title="Importuj"></a> &nbsp; <a href="/<c:out value="${page.module}" />"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
 
 <p>
 
@@ -21,7 +21,11 @@
 		</tr>
 		<tr class="FormRow preview">
 			<td>Preview:</td>
-			<td><img src="upload/<c:out value="${image.file_name}" />" width="100%" /></td>
+			<td>
+				<div class="dc">
+					<img class="dynamic" src="upload/<c:out value="${image.file_name}" />" width="300" height="200" onload="showImage(this);" />
+				</div>
+			</td>
 		</tr>
 		<tr class="FormRow">
 			<td>File Name:</td>
