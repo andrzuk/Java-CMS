@@ -76,6 +76,12 @@ public class Category_Servlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		if (category == null) {
+			
+			response.sendRedirect("/resource_not_found");
+			return;
+		}
+		
 		pageObject.setMain_title(category.getCaption());
 		attributes = pageObject.setPageMeta(attributes);
 		

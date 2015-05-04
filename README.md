@@ -8,10 +8,13 @@ Java MVC Application based on Servlets &amp; JSP
 * Functionalities:
   - application settings / config
   - managing the users
+  - logins register
   - access control list
+  - styles editor
   - creating categories as dynamic navi
   - creating articles (pages) linked to categories
   - managing comments to articles (pages)
   - picture gallery
+  - import images from gallery to pages editor
   - visitors register
 * On-line URL: http://cms-jfrmwrk.rhcloud.com

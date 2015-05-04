@@ -77,4 +77,9 @@ public class Index_Servlet extends HttpServlet {
 
 		dispatcher.forward(request, response);
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		doGet(request, response);
+	}
 }
