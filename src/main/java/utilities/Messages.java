@@ -124,6 +124,28 @@ public class Messages {
 				message.setMessage(type.ERROR, "Znacznik obrazka nie został skopiowany.");
 			}
 		}
+		else if (action.equals("archive")) {
+			
+			if (result > 0) {
+				
+				message.setMessage(type.INFORMATION, "Strona została pomyślnie zarchiwizowana.");
+			}
+			else {
+				
+				message.setMessage(type.ERROR, "Strona nie została zarchiwizowana.");
+			}
+		}
+		else if (action.equals("restore")) {
+			
+			if (result > 0) {
+				
+				message.setMessage(type.INFORMATION, "Strona została pomyślnie przywrócona.");
+			}
+			else {
+				
+				message.setMessage(type.ERROR, "Strona nie została przywrócona.");
+			}
+		}
 		else {
 			
 			message.setMessage(type.QUESTION, "Akcja nie obsłużona. Co miałeś na myśli?");

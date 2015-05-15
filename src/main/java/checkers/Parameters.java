@@ -30,6 +30,20 @@ public class Parameters {
 		return id;
 	}
 	
+	public int getArchiveId() {
+		
+		try {
+			
+			id = Integer.parseInt(request.getParameter("archive_id"));
+		}
+		catch (NumberFormatException e) {
+			
+			id = 0;
+		}
+		
+		return id;
+	}
+	
 	public String getAction() {
 		
 		try {

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.Pages_Dao;
+import dao.Archives_Dao;
 import utilities.Paginator;
 import utilities.Sorting;
 import utilities.Descriptions;
@@ -543,6 +544,228 @@ public class Pages_Model {
 			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
 			
 			preparedStatement.setInt(1, id);
+			
+			result = preparedStatement.executeUpdate();
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return result;
+	}
+	
+	public int archive(int id) throws SQLException, ParseException {
+
+		int result = 0;
+		int counter = 0;
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		// wczytuje oryginalny rekord:
+		
+		Pages_Dao page = getOne(id);
+
+		// sprawdza, czy istnieje juz kopia rekordu:
+		
+		try {
+			
+			query = "SELECT COUNT(*) AS licznik FROM archives " +
+					" WHERE page_id = ? AND title = ? AND description = ? AND contents = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, id);
+			preparedStatement.setString(2, page.getTitle());
+			preparedStatement.setString(3, page.getDescription());
+			preparedStatement.setString(4, page.getContents());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				counter = rs.getInt("licznik");
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		if (counter == 0) { // nie ma jeszcze kopii rekordu
+			
+			try {
+				
+				query = "INSERT INTO archives" +
+						" (id, page_id, type, category_id, title, contents, description, author_id, visible, modified) VALUES" +
+						" (NULL, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+	
+				preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+				
+				preparedStatement.setInt(1, id);
+				preparedStatement.setString(2, page.getType());
+				preparedStatement.setInt(3, page.getCategory_id());
+				preparedStatement.setString(4, page.getTitle());
+				preparedStatement.setString(5, page.getContents());
+				preparedStatement.setString(6, page.getDescription());
+				preparedStatement.setInt(7, page.getAuthor_id());
+				preparedStatement.setString(8, page.isVisible() ? "1" : "0");
+				
+				result = preparedStatement.executeUpdate();
+			} 
+			catch (SQLException e) {
+	
+				System.out.println(e.getMessage());
+			} 
+			finally {
+	
+				if (preparedStatement != null) {
+	
+					preparedStatement.close();
+				}
+				if (db.Connect.getDbConnection() != null) {
+	
+					db.Connect.getDbConnection().close();
+				}
+			}			
+		}
+				
+		return result;
+	}
+	
+	public List<Archives_Dao> getArchives(int id) throws SQLException, ParseException {
+
+		Archives_Dao archive = null;
+		List<Archives_Dao> archives = new ArrayList<Archives_Dao>();
+		
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			
+			query = "SELECT id, modified FROM archives" +
+					" WHERE page_id = ?" + 
+					" ORDER BY modified";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, id);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+		
+				archive = new Archives_Dao();
+				
+				archive.setId(rs.getInt("id"));
+				archive.setModified(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("modified")));
+				
+				archives.add(archive);
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return archives;
+	}
+	
+	public int restore(int id, int archive_id) throws SQLException, ParseException {
+
+		Pages_Dao page = null;
+		
+		int result = 0;
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		// odczytuje z archiwum wybraną kopię strony:
+		
+		try {
+			
+			query = "SELECT *, NULL AS caption, NULL AS login FROM archives" + 
+					" WHERE id = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, archive_id);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				page = setRecord(rs, new Pages_Dao());
+            }
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+
+		if (page == null) return result; 
+		
+		// przywraca kopię strony:
+		
+		try {
+			
+			query = "UPDATE " + TABLE +
+					" SET type = ?, category_id = ?, title = ?, contents = ?, description = ?, author_id = ?, visible = ?, modified = NOW()" +
+					" WHERE id = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setString(1, page.getType());
+			preparedStatement.setInt(2, page.getCategory_id());
+			preparedStatement.setString(3, page.getTitle());
+			preparedStatement.setString(4, page.getContents());
+			preparedStatement.setString(5, page.getDescription());
+			preparedStatement.setInt(6, page.getAuthor_id());
+			preparedStatement.setString(7, page.isVisible() ? "1" : "0");
+			preparedStatement.setInt(8, id);
 			
 			result = preparedStatement.executeUpdate();
 		} 

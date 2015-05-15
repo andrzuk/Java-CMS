@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/<c:out value="${page.module}" />"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
+<h1 style="text-align: center;">${page['title']} &nbsp; <a href="/<c:out value="${page.module}" />?action=restore&id=<c:out value="${site.id}" />"><img alt="close" src="images/archives.png" title="Przywróć"></a> &nbsp; <a href="/<c:out value="${page.module}" />"><img alt="close" src="images/exit.png" title="Zamknij"></a></h1>
 
 <p>
 
@@ -77,6 +77,8 @@
 		<tr>
 			<td class="ActionBar" colspan="2">
 				<input type="submit" name="confirm" value="Update">
+				&nbsp;
+				<input type="submit" name="confirm" value="Archive">
 				&nbsp;
 				<input type="submit" name="cancel" value="Cancel">
 			</td>

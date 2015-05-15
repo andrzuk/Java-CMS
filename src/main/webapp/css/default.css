@@ -40,7 +40,7 @@ tr.Noresults > td { text-align: center; color: #c00; background-color: #fca; fon
 tr.odd > td { background-color: #d0d9df; font-size: 1.0em; }
 tr.even > td { background-color: #e0e9ef; font-size: 1.0em; }
 tr.preview > td > img { margin: 1px; border: 1px solid #999; }
-tr.FormRow > td { background-color: #eef; }
+tr.FormRow > td { background-color: #efefff; padding: 5px 5px 5px 15px; }
 li { margin: 0.2em 0px; }
 
 nav.navbar > div.container { text-align: center; margin: 0px 20px; border-bottom: 1px solid #ccc; }

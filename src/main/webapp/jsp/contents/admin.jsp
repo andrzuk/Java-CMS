@@ -13,8 +13,10 @@
 		  <span class="Module"><a href="<c:out value="${item.link}" />"><c:out value="${item.title}" /></a></span>
 		  <br />
 		  <span class="Actives"><c:out value="${item.actives}" /></span>
-		  <span class="Separate">/</span>
-		  <span class="All"><c:out value="${item.all}" /></span>
+		  <c:if test="${item.two_counters == true}">
+		    <span class="Separate">/</span>
+		    <span class="All"><c:out value="${item.all}" /></span>
+		  </c:if>
         </span>
       </c:forEach>
     </div>

@@ -11,6 +11,7 @@ public class Admin_Dao {
 	private String link;
 	private String image;
 	private String title;
+	private boolean two_counters;
 	
 	public String getModule() {
 	
@@ -80,5 +81,15 @@ public class Admin_Dao {
 	public void setTitle(String title) {
 	
 		this.title = title;
+	}
+
+	public boolean isTwo_counters() {
+		
+		return two_counters;
+	}
+
+	public void setTwo_counters(boolean two_counters) {
+		
+		this.two_counters = two_counters;
 	}
 }

@@ -37,6 +37,27 @@ CREATE TABLE IF NOT EXISTS `admin_functions` (
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `archives`
+--
+
+CREATE TABLE IF NOT EXISTS `archives` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `page_id` int(11) unsigned NOT NULL,
+  `type` varchar(16) NOT NULL,
+  `category_id` int(11) unsigned NOT NULL,
+  `title` varchar(512) NOT NULL,
+  `contents` longtext,
+  `description` varchar(1024) DEFAULT NULL,
+  `author_id` int(11) unsigned NOT NULL,
+  `visible` tinyint(1) NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `page_id` (`page_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `categories`
 --
 
@@ -350,6 +371,12 @@ INSERT INTO `pages` (`id`, `type`, `category_id`, `title`, `contents`, `descript
 --
 
 --
+-- Ograniczenia dla tabeli `archives`
+--
+ALTER TABLE `archives`
+  ADD CONSTRAINT `fk_archives_pages` FOREIGN KEY (`page_id`) REFERENCES `pages` (`id`);
+  
+--
 -- Ograniczenia dla tabeli `categories`
 --
 ALTER TABLE `categories`
@@ -380,6 +407,7 @@ ALTER TABLE `pages`
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `fk_roles_functions` FOREIGN KEY (`function_id`) REFERENCES `admin_functions` (`id`),
   ADD CONSTRAINT `fk_roles_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

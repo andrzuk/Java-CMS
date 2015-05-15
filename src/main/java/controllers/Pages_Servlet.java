@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Categories_Dao;
 import dao.Pages_Dao;
+import dao.Archives_Dao;
 import models.Categories_Model;
 import models.Pages_Model;
 import validators.Pages_Validator;
@@ -155,6 +156,32 @@ public class Pages_Servlet extends HttpServlet {
 			
 			request.setAttribute("site", site);
 		}
+		else if (action.equals("restore")) {
+			
+			Pages_Dao site = null;
+			List<Archives_Dao> archives = null;
+			
+			Pages_Model modelObject = new Pages_Model();
+			
+			try {
+				
+				site = modelObject.getOne(id);
+				archives = modelObject.getArchives(id);
+			} 
+			catch (SQLException e) {
+
+				e.printStackTrace();
+			} 
+			catch (ParseException e) {
+			
+				e.printStackTrace();
+			}
+			
+			attributes.put("action", action);
+			
+			request.setAttribute("site", site);
+			request.setAttribute("data", archives);
+		}
 		else {
 			
 			List<Pages_Dao> pages = null;
@@ -221,6 +248,7 @@ public class Pages_Servlet extends HttpServlet {
 		Messages message = new Messages(request);
 		
 		int id = parameter.getId();
+		int archive_id = parameter.getArchiveId();
 		String action = parameter.getAction();
 		String button = parameter.getButton();
 		
@@ -291,12 +319,53 @@ public class Pages_Servlet extends HttpServlet {
 				else {
 					
 					response.sendRedirect("/" + MODULE + "?action=" + action + "&id=" + id);
-				}		
+				}
+			}
+			else if (button.equals("archive")) {
+				
+				action = "archive";
+				try {
+					
+					result = modelObject.archive(id);
+				} 
+				catch (SQLException e) {
+					
+					e.printStackTrace();
+				} 
+				catch (ParseException e) {
+				
+					e.printStackTrace();
+				}
+				response.sendRedirect("/" + MODULE);
 			}
 			else {
 				
 				response.sendRedirect("/" + MODULE);
 			}
+			message.setMessage(action, result);
+			request = message.show();
+		}
+		else if (action.equals("restore")) {
+			
+			modelObject = new Pages_Model();
+
+			if (button.equals("restore")) {
+				
+				try {
+					
+					result = modelObject.restore(id, archive_id);
+				} 
+				catch (SQLException e) {
+					
+					e.printStackTrace();
+				} 
+				catch (ParseException e) {
+				
+					e.printStackTrace();
+				}
+			}
+			response.sendRedirect("/" + MODULE);
+
 			message.setMessage(action, result);
 			request = message.show();
 		}

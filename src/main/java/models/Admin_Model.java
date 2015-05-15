@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import dao.Admin_Dao;
+import models.Logins_Model;
+import models.Visitors_Model;
 
 public class Admin_Model {
 
@@ -21,10 +23,15 @@ public class Admin_Model {
 		String module_name = null;
 		Admin_Dao stat_item = null;
 		List<Admin_Dao> statistics = new ArrayList<Admin_Dao>();
+		Logins_Model logins = new Logins_Model();
+		Visitors_Model visitors = new Visitors_Model();
+		logins.setFilter(null);
+		visitors.setFilter(null);
 
 		module_name = "categories";
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
+		stat_item.setTwo_counters(true);
 		stat_item.setActives(getActives(module_name, "visible", "1"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
@@ -36,6 +43,7 @@ public class Admin_Model {
 		module_name = "pages";
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
+		stat_item.setTwo_counters(true);
 		stat_item.setActives(getActives(module_name, "visible", "1"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
@@ -47,6 +55,7 @@ public class Admin_Model {
 		module_name = "comments";
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
+		stat_item.setTwo_counters(true);
 		stat_item.setActives(getActives(module_name, "visible", "0"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
@@ -58,12 +67,37 @@ public class Admin_Model {
 		module_name = "messages";
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
+		stat_item.setTwo_counters(true);
 		stat_item.setActives(getActives(module_name, "visible", "0"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
 		stat_item.setLink("/messages");
 		stat_item.setImage("images/mail_message.png");
 		stat_item.setTitle("Wiadomości");
+		statistics.add(stat_item);
+		
+		module_name = "logins";
+		stat_item = new Admin_Dao();
+		stat_item.setModule(module_name);
+		stat_item.setTwo_counters(false);
+		stat_item.setActives(logins.getCount());
+		stat_item.setAll(0);
+		stat_item.setLast_item(getLast(module_name, "login_time"));
+		stat_item.setLink("/logins");
+		stat_item.setImage("images/password.png");
+		stat_item.setTitle("Logowania");
+		statistics.add(stat_item);
+		
+		module_name = "visitors";
+		stat_item = new Admin_Dao();
+		stat_item.setModule(module_name);
+		stat_item.setTwo_counters(false);
+		stat_item.setActives(visitors.getCount());
+		stat_item.setAll(0);
+		stat_item.setLast_item(getLast(module_name, "visited"));
+		stat_item.setLink("/visitors");
+		stat_item.setImage("images/internet.png");
+		stat_item.setTitle("Odwiedziny");
 		statistics.add(stat_item);
 		
 		return statistics;
