@@ -8,8 +8,8 @@
 
 <table align="center" width="95%" cellpadding="5" cellspacing="0">
 
-	<c:set var="columns_count" value="11" />
-	<c:set var="actions_count" value="3" />
+	<c:set var="columns_count" value="12" />
+	<c:set var="actions_count" value="4" />
 	
 	<jsp:include page="/jsp/templates/sort.jsp">
 		<jsp:param name="sorting" value="${sorting}" />
@@ -44,6 +44,7 @@
 			<td style="text-align: <c:out value="${sorting.fields_aligns[6]}" />;"><c:out value="${image.login}" /></td>
 			<td style="text-align: <c:out value="${sorting.fields_aligns[7]}" />;"><c:out value="${image.modified_short}" /></td>
 			<td class="Action"><a href="/upload/<c:out value="${image.file_name}"/>"><img alt="download" src="images/save.png" title="Pobierz"></a></td>
+			<td class="Action"><a href="/<c:out value="${page.module}" />?action=edit&id=<c:out value="${image.id}"/>"><img alt="edit" src="images/edit.png" title="Edytuj"></a></td>
 			<td class="Action"><a href="/<c:out value="${page.module}" />?action=import&id=<c:out value="${image.id}"/>"><img alt="import" src="images/import.png" title="Importuj"></a></td>
 			<td class="Action"><a href="/<c:out value="${page.module}" />?action=delete&id=<c:out value="${image.id}"/>"><img alt="delete" src="images/trash.png" title="Usuń"></a></td>
 		</tr>

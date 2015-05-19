@@ -40,7 +40,7 @@ tr.Noresults > td { text-align: center; color: #c00; background-color: #fca; fon
 tr.odd > td { background-color: #d0d9df; font-size: 1.0em; }
 tr.even > td { background-color: #e0e9ef; font-size: 1.0em; }
 tr.preview > td > img { margin: 1px; border: 1px solid #999; }
-tr.FormRow > td { background-color: #efefff; padding: 5px 5px 5px 15px; }
+tr.FormRow > td { background-color: #eaeaea; padding: 5px 5px 5px 15px; }
 li { margin: 0.2em 0px; }
 
 nav.navbar > div.container { text-align: center; margin: 0px 20px; border-bottom: 1px solid #ccc; }
@@ -105,7 +105,7 @@ img.dynamic { visibility: hidden; vertical-align: middle; }
 img.left { float: left; padding: 0px 20px 0px 0px; } 
 img.right { float: right; padding: 0px 0px 0px 20px; } 
 
-div.dc { border: 1px solid #ddd; padding: 1px; position: relative; display: inline-block; }
+div.dc { padding: 1px; border: 1px solid #999; position: relative; display: inline-block; }
 div.loading { position: absolute; left: 50%; top: 50%; }
 div.left { float: left; margin: 5px 20px 5px 0px; } 
 div.right { float: right; margin: 5px 0px 5px 20px; } 

@@ -202,9 +202,9 @@ public class Images_Model {
 			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
 			
 			preparedStatement.setString(1, image.getFile_name());
-			preparedStatement.setLong(2,  image.getFile_size());
-			preparedStatement.setLong(3,  image.getWidth());
-			preparedStatement.setLong(4,  image.getHeight());
+			preparedStatement.setLong(2, image.getFile_size());
+			preparedStatement.setLong(3, image.getWidth());
+			preparedStatement.setLong(4, image.getHeight());
 			preparedStatement.setInt(5, image.getAuthor_id());
 
 			result = preparedStatement.executeUpdate();
@@ -227,6 +227,48 @@ public class Images_Model {
 		
 		return result;
 	}
+
+	public int update(int id) throws SQLException {
+
+		int result = 0;
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			
+			query = "UPDATE " + TABLE +
+					" SET file_name = ?, file_size = ?, width = ?, height = ?, author_id = ?, modified = NOW()" +
+					" WHERE id = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setString(1, image.getFile_name());
+			preparedStatement.setLong(2, image.getFile_size());
+			preparedStatement.setLong(3, image.getWidth());
+			preparedStatement.setLong(4, image.getHeight());
+			preparedStatement.setInt(5, image.getAuthor_id());
+			preparedStatement.setInt(6, id);
+
+			result = preparedStatement.executeUpdate();
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return result;
+	}	
 
 	public int delete(int id) throws SQLException {
 
@@ -261,5 +303,46 @@ public class Images_Model {
 		}
 		
 		return result;
-	}	
+	}
+	
+	public Images_Dao getByName(String fileName) throws SQLException, ParseException {
+
+		Images_Dao image = null;
+		
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			
+			query = "SELECT *, NULL AS login FROM " + TABLE + " WHERE file_name = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setString(1, fileName);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				image = setRecord(rs, new Images_Dao());
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return image;
+	}
 }

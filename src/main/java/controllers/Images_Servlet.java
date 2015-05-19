@@ -65,8 +65,8 @@ public class Images_Servlet extends HttpServlet {
 	        InputStream is = request.getPart(part.getName()).getInputStream();
 	        long fileSize = request.getPart(part.getName()).getSize();
 	        String fileName = getFileName(part);
-	        if (fileName != null) {	        	
-		        fileName = fileName.replaceAll(" ", "_");
+	        if (fileName != null) {
+		        fileName = fileName.replaceAll(" ", "-");
 		        image.setFile_name(fileName);
 				image.setFile_size(fileSize);
 	        }
@@ -93,6 +93,40 @@ public class Images_Servlet extends HttpServlet {
 		image.setAuthor_id((Integer) request.getSession().getAttribute("user_id"));
 
 		return image;
+	}
+	
+	private boolean isFileAttached(HttpServletRequest request, Images_Dao image) throws FileNotFoundException, IOException, ServletException {
+		
+	    boolean result = false;
+	    
+		for (Part part : request.getParts()) {
+	        InputStream is = request.getPart(part.getName()).getInputStream();
+	        long fileSize = request.getPart(part.getName()).getSize();
+	        String fileName = getFileName(part);
+	        if (fileName != null) {	        	
+				result = fileSize > 0;
+	        }
+	        is.close();
+	    }
+	    
+	    return result;
+	}
+    
+	private String getAttachedName(HttpServletRequest request, Images_Dao image) throws FileNotFoundException, IOException, ServletException {
+		
+	    String result = null;
+	    
+		for (Part part : request.getParts()) {
+	        InputStream is = request.getPart(part.getName()).getInputStream();
+	        String fileName = getFileName(part);
+	        if (fileName != null) {	        	
+		        fileName = fileName.replaceAll(" ", "-");
+				result = fileName;
+	        }
+	        is.close();
+	    }
+	    
+	    return result;
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -125,6 +159,29 @@ public class Images_Servlet extends HttpServlet {
 			attributes.put("action", action);
 		}
 		else if (action.equals("preview")) {
+			
+			Images_Dao image = null;
+			
+			Images_Model modelObject = new Images_Model();
+			
+			try {
+				
+				image = modelObject.getOne(id);
+			} 
+			catch (SQLException e) {
+
+				e.printStackTrace();
+			} 
+			catch (ParseException e) {
+			
+				e.printStackTrace();
+			}
+			
+			attributes.put("action", action);
+			
+			request.setAttribute("image", image);
+		}
+		else if (action.equals("edit")) {
 			
 			Images_Dao image = null;
 			
@@ -282,9 +339,18 @@ public class Images_Servlet extends HttpServlet {
 				try {
 					
 					Images_Dao image = new Images_Dao();
-					image = setData(request, image);
-					modelObject = new Images_Model(image);
-					result = modelObject.save();
+
+					if (isFileAttached(request, image)) {
+						
+						// jeśli na dysku nie ma pliku o tej samej nazwie:
+						File aFile = new File(System.getenv("OPENSHIFT_DATA_DIR") + getAttachedName(request, image));
+						if (!aFile.exists()) {
+							
+							image = setData(request, image);
+							modelObject = new Images_Model(image);
+							result = modelObject.save();
+						}
+					}					
 				} 
 				catch (SQLException e) {
 					
@@ -292,6 +358,55 @@ public class Images_Servlet extends HttpServlet {
 				} 
 				catch (FileNotFoundException e) {
 					
+					e.printStackTrace();
+				}
+				response.sendRedirect("/" + MODULE);
+			}
+			else {
+				
+				response.sendRedirect("/" + MODULE);
+			}
+			message.setMessage(action, result);
+			request = message.show();
+		}
+		else if (action.equals("edit")) {
+			
+			if (button.equals("update")) {
+				
+				try {
+					
+					Images_Dao image = new Images_Dao();
+					Images_Dao picture = new Images_Dao();
+					
+					if (isFileAttached(request, image)) {
+						
+						modelObject = new Images_Model();
+						picture = modelObject.getByName(getAttachedName(request, image));
+						image = modelObject.getOne(id);
+						
+						// jeśli nazwa pliku nie występuje poza edytowanym rekordem:
+						if (picture == null || picture.getId() == image.getId()) {
+							
+							// kasuje z dysku stary plik (aby można było wgrać nowy):
+							File aFile = new File(System.getenv("OPENSHIFT_DATA_DIR") + image.getFile_name());
+							if (aFile.exists()) aFile.delete();
+							
+							image = setData(request, image);
+							modelObject = new Images_Model(image);
+							result = modelObject.update(id);
+						}						
+					}					
+				} 
+				catch (SQLException e) {
+					
+					e.printStackTrace();
+				} 
+				catch (FileNotFoundException e) {
+					
+					e.printStackTrace();
+				} 
+				catch (ParseException e) {
+				
 					e.printStackTrace();
 				}
 				response.sendRedirect("/" + MODULE);
