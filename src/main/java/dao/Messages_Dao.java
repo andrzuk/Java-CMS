@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 import utilities.Dates;
+import checkers.Punctuation;
 
 public class Messages_Dao {
 
@@ -64,7 +65,9 @@ public class Messages_Dao {
 	
 	public void setMessage(String message) {
 	
-		this.message = message;
+		Punctuation punctuation = new Punctuation();
+		
+		this.message = punctuation.formatContent(message);
 	}
 	
 	public boolean isVisible() {

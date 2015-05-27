@@ -5,7 +5,7 @@
 
 <p>
 
-<table align="center" width="400" cellpadding="5" cellspacing="0">
+<table align="center" width="90%" cellpadding="5" cellspacing="0">
 
 	<form action="/<c:out value="${page.module}" />?action=edit" method="post">
 		<tr class="ColumnHeaders">
@@ -23,8 +23,8 @@
 			<td><c:out value="${comment.title}" /><input type="hidden" name="page_id" value="<c:out value="${comment.page_id}" />"></td>
 		</tr>
 		<tr class="FormRow">
-			<td>Comment:</td>
-			<td><textarea name="comment" rows="10"><c:out value="${comment.comment}" /></textarea></td>
+			<td width="10%">Comment:</td>
+			<td width="90%"><textarea name="comment" rows="10"><c:out value="${comment.comment}" /></textarea></td>
 		</tr>
 		<tr class="FormRow">
 			<td>Accepted:</td>

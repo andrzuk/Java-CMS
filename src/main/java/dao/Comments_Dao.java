@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 import utilities.Dates;
+import checkers.Punctuation;
 
 public class Comments_Dao {
 	
@@ -66,7 +67,9 @@ public class Comments_Dao {
 	
 	public void setComment(String comment) {
 	
-		this.comment = comment;
+		Punctuation punctuation = new Punctuation();
+		
+		this.comment = punctuation.formatContent(comment);
 	}
 	
 	public boolean isVisible() {
