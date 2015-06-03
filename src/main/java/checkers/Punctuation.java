@@ -16,6 +16,9 @@ public class Punctuation {
 		pairs.add(new Pair(".", ". "));
 		pairs.add(new Pair(",", ", "));
 		
+		pairs.add(new Pair("( ", "("));
+		pairs.add(new Pair(" )", ")"));
+		
 		pairs.add(new Pair("  ", " "));
 	}
 	

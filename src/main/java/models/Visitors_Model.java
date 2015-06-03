@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import utilities.Paginator;
@@ -260,5 +261,47 @@ public class Visitors_Model {
 		}
 		
 		return visitor;
+	}
+	
+	public Date getLast() throws SQLException, ParseException {
+
+		Date result = null;
+		
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			
+			query = "SELECT visited AS last_item" +
+					" FROM visitors" +
+					" WHERE " + getCondition() +
+					" ORDER BY visited DESC LIMIT 1";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+                result = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("last_item"));                
+            }
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return result;
 	}
 }

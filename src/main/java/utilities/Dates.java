@@ -38,6 +38,8 @@ public class Dates {
 	public String getShortDate(Date longDate) {
 		
 		String custom = "";
+		
+		if (longDate == null) return custom;
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(longDate);

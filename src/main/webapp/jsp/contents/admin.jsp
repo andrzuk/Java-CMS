@@ -13,6 +13,11 @@
 		  <span class="Module"><a href="<c:out value="${item.link}" />"><c:out value="${item.title}" /></a></span>
 		  <br />
 		  <span class="Actives"><c:out value="${item.actives}" /></span>
+		  <c:if test="${item.show_last == true}">
+		    <span class="Separate">&nbsp;(</span>
+		    <span class="Last"><c:out value="${item.last_item_short}" /></span>
+		    <span class="Separate">)</span>
+		  </c:if>
 		  <c:if test="${item.two_counters == true}">
 		    <span class="Separate">/</span>
 		    <span class="All"><c:out value="${item.all}" /></span>

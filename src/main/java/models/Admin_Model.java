@@ -32,6 +32,7 @@ public class Admin_Model {
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
 		stat_item.setTwo_counters(true);
+		stat_item.setShow_last(false);
 		stat_item.setActives(getActives(module_name, "visible", "1"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
@@ -44,6 +45,7 @@ public class Admin_Model {
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
 		stat_item.setTwo_counters(true);
+		stat_item.setShow_last(false);
 		stat_item.setActives(getActives(module_name, "visible", "1"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
@@ -56,6 +58,7 @@ public class Admin_Model {
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
 		stat_item.setTwo_counters(true);
+		stat_item.setShow_last(false);
 		stat_item.setActives(getActives(module_name, "visible", "0"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
@@ -68,6 +71,7 @@ public class Admin_Model {
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
 		stat_item.setTwo_counters(true);
+		stat_item.setShow_last(false);
 		stat_item.setActives(getActives(module_name, "visible", "0"));
 		stat_item.setAll(getAll(module_name));
 		stat_item.setLast_item(getLast(module_name, "modified"));
@@ -80,6 +84,7 @@ public class Admin_Model {
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
 		stat_item.setTwo_counters(false);
+		stat_item.setShow_last(false);
 		stat_item.setActives(logins.getCount());
 		stat_item.setAll(0);
 		stat_item.setLast_item(getLast(module_name, "login_time"));
@@ -92,9 +97,10 @@ public class Admin_Model {
 		stat_item = new Admin_Dao();
 		stat_item.setModule(module_name);
 		stat_item.setTwo_counters(false);
+		stat_item.setShow_last(true);
 		stat_item.setActives(visitors.getCount());
 		stat_item.setAll(0);
-		stat_item.setLast_item(getLast(module_name, "visited"));
+		stat_item.setLast_item(visitors.getLast());
 		stat_item.setLink("/visitors");
 		stat_item.setImage("images/internet.png");
 		stat_item.setTitle("Odwiedziny");
