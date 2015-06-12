@@ -12,6 +12,7 @@ public class Visitors_Dao {
 	private String visitor_ip;
 	private String host_name;
 	private String http_referer;
+	private String http_referer_split;
 	private String request_uri;
 	private Date visited;
 	private String visited_short;
@@ -56,6 +57,16 @@ public class Visitors_Dao {
 		this.http_referer = http_referer;
 	}
 	
+	public String getHttp_referer_split() {
+		
+		return http_referer_split;
+	}
+
+	public void setHttp_referer_split(String http_referer_split) {
+		
+		this.http_referer_split = http_referer_split;
+	}
+
 	public String getRequest_uri() {
 		
 		return request_uri;

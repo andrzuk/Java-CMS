@@ -28,7 +28,7 @@
 		</tr>
 		<tr class="FormRow">
 			<td>HTTP Referer:</td>
-			<td><c:out value="${visitor.http_referer}" /></td>
+			<td><a href="<c:out value="${visitor.http_referer}" />" target="_blank"><c:out value="${visitor.http_referer_split}" /></a></td>
 		</tr>
 		<tr class="FormRow">
 			<td>Request URI:</td>
