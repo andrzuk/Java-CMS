@@ -18,6 +18,24 @@
 
 <div class="Separator">&nbsp;</div>
 
+<h2 style="text-align: center; color: #aaa;">Inne artykuły z tej kategorii:</h2>
+
+<p>
+	<div class="similar">
+	
+		<c:forEach items="${articles}" var="article" varStatus="iterator">
+		
+			<c:if test="${article.id != site.id}">
+				<span class="sibling"><a href="/page?id=<c:out value="${article.id}" />"><c:out value="${article.title}" /></a></span>
+			</c:if>
+			
+		</c:forEach>
+	
+	</div>
+</p>
+
+<div class="Separator">&nbsp;</div>
+
 <h2 style="text-align: center; color: #aaa;">Komentarze:</h2>
 
 <p id="comments">

@@ -52,6 +52,7 @@ public class Page_Servlet extends HttpServlet {
 		List<Categories_Dao> categories = null;
 		List<Comments_Dao> comments = null;
 		Pages_Dao site = null;
+		List<Pages_Dao> articles = null;
 		
 		Pages_Model modelObject = new Pages_Model();
 		Categories_Model importObject = new Categories_Model();
@@ -66,6 +67,7 @@ public class Page_Servlet extends HttpServlet {
 			site = modelObject.getActive(id);
 			comments = commentsObject.getActives(id);
 			count = commentsObject.getArticleCommentCount(id);
+			articles = modelObject.getArticleHeaders(site.getCategory_id());
 			code_highlight_theme = config.getConfig("code_highlight_theme");
 		} 
 		catch (SQLException e) {
@@ -98,6 +100,7 @@ public class Page_Servlet extends HttpServlet {
 		request.setAttribute("site", site);
 		request.setAttribute("comments", comments);
 		request.setAttribute("count", count);
+		request.setAttribute("articles", articles);
 		
 		request.setAttribute("message", request.getSession().getAttribute("message"));
 		request.getSession().removeAttribute("message");

@@ -1,4 +1,4 @@
-body { color: #333; background-color: #efefef; font-family: sans-serif; font-size: 12px; line-height: 1.4; }
+body { color: #123; background-color: #fdfeff; font-family: sans-serif; font-size: 12px; line-height: 1.4; }
 a { color: #069; text-decoration: none; }
 a:hover { color: #c00; }
 a > img { border: 0px; }
@@ -22,7 +22,7 @@ tr.ColumnHeaders > td > img { padding: 0px 10px; }
 tr.ListHeader > td { background-color: #9cf; border-bottom: 1px solid #999; padding: 5px; }
 tr.ColumnHeaders > td > table, tr.ListHeader > td > table { border: 0px dotted #fff; }
 tr.ColumnHeaders > td > span.Icon { padding: 0px 10px; }
-tr.ColumnHeaders > td > span.Title { position: relative; top: -10px; color: #555; }
+tr.ColumnHeaders > td > span.Title { font-size: 1.2em; position: relative; top: -10px; color: #e30; }
 tr.ColumnHeaders > td.Line { border-top: 1px solid #999; }
 td.Icon { width: 5%; }
 td.Icon > img { padding: 5px 10px 0px 5px; } 
@@ -37,8 +37,8 @@ td.Action > a > img { border: 0px; padding: 5px; }
 td.ActionBar { text-align: right; padding: 10px; border-top: 1px solid #999; background-color: #ddd; }
 tr.Showfilter > td { text-align: center; color: #666; margin: 2px; padding: 5px; border-bottom: 1px solid #999; background-color: #def; }
 tr.Noresults > td { text-align: center; color: #c00; background-color: #fca; font-weight: bold; margin: 10px; padding: 5px; border: 0px dotted #fff; }
-tr.odd > td { background-color: #d0d9df; font-size: 1.0em; }
-tr.even > td { background-color: #e0e9ef; font-size: 1.0em; }
+tr.odd > td { background-color: #e0efff; font-size: 1.0em; }
+tr.even > td { background-color: #ffffff; font-size: 1.0em; }
 tr.preview > td > img { margin: 1px; border: 1px solid #999; }
 tr.FormRow > td { background-color: #eaeaea; padding: 5px 5px 5px 15px; }
 li { margin: 0.2em 0px; }
@@ -64,6 +64,8 @@ span.comment_nick > img { vertical-align: middle; padding: 0px 5px 0px 10px; }
 div.continue { text-align: right; font-size: 1.0em; font-style: italic; margin-top: 0.5em; }
 div.continue > a { color: #c30; }
 div.continue > a:hover { color: #369; }
+div.similar { text-align: center; margin: 0px 45px; padding: 10px 0px 10px 0px; }
+div.similar > span.sibling { font-size: 1.5em; font-weight: bold; margin: 10px; padding: 10px; }
 
 div.TopRow { margin: 0px 20px 10px 20px; padding: 0px 10px 5px 10px; border-bottom: 1px solid #ccc; }
 div.TopRow > span#Logo { margin-right: 50px; }
@@ -99,7 +101,7 @@ span.Module > a:hover { color: #c00; }
 span.Actives { font-size: 2.0em; color: #e00; }
 span.Separate { font-size: 1.5em; color: #aaa; font-weight: normal; }
 span.All { font-size: 2.0em; color: #090; }
-span.Last { font-size: 1.0em; color: #666; }
+span.Last { font-size: 1.0em; color: #090; }
 
 img.dynamic { visibility: hidden; vertical-align: middle; }
 img.left { float: left; padding: 0px 20px 0px 0px; } 
@@ -109,3 +111,6 @@ div.dc { padding: 1px; border: 1px solid #999; position: relative; display: inli
 div.loading { position: absolute; left: 50%; top: 50%; }
 div.left { float: left; margin: 5px 20px 5px 0px; } 
 div.right { float: right; margin: 5px 0px 5px 20px; } 
+
+div.GalleryImages { text-align: center; }
+span.ImageElement { margin: 10px; padding: 10px; display: inline-block; text-align: center; font-size: 1.0em; color: #090; }
