@@ -106,6 +106,7 @@ public class Visitors_Model {
 		
 		int maxLength = Integer.parseInt(config.getConfig("http_referer_length"));
 		String referer = null;
+		String request_uri = null;
 		String query = null;
 		InetAddress inet_address = null;
 		PreparedStatement preparedStatement = null;
@@ -130,6 +131,10 @@ public class Visitors_Model {
 				inet_address = InetAddress.getByName(rs.getString("visitor_ip"));
 				referer = rs.getString("http_referer");
 				referer = referer.length() > maxLength ? referer.substring(0, maxLength) : referer;
+				referer = referer.replace("/", " / ").replace("=", " = ").replace("&", " & ");
+				request_uri = rs.getString("request_uri");
+				request_uri = request_uri.length() > maxLength ? request_uri.substring(0, maxLength) : request_uri;
+				request_uri = request_uri.replace("/", " / ").replace("=", " = ").replace("&", " & ");
 				
 				visitor = new Visitors_Dao();
                 
@@ -137,7 +142,7 @@ public class Visitors_Model {
                 visitor.setVisitor_ip(rs.getString("visitor_ip"));
                 visitor.setHost_name(inet_address.getHostName());
                 visitor.setHttp_referer(referer);
-                visitor.setRequest_uri(rs.getString("request_uri"));
+                visitor.setRequest_uri(request_uri);
                 visitor.setVisited(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("visited")));
                 visitors.add(visitor);
             }			
