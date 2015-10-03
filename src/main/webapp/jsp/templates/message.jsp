@@ -9,8 +9,8 @@
 		<c:set var="present" scope="session" value="true" />
 	</c:when>
 	<c:when test="${param.msg_type == 'WARNING'}">
-		<c:set var="message_color" scope="session" value="#930" />
-		<c:set var="background_color" scope="session" value="#ffc" />
+		<c:set var="message_color" scope="session" value="#c60" />
+		<c:set var="background_color" scope="session" value="#fed" />
 		<c:set var="border" scope="session" value="1px solid #fc0" />
 		<c:set var="present" scope="session" value="true" />
 	</c:when>
@@ -21,9 +21,9 @@
 		<c:set var="present" scope="session" value="true" />
 	</c:when>
 	<c:when test="${param.msg_type == 'INFORMATION'}">
-		<c:set var="message_color" scope="session" value="#00c" />
-		<c:set var="background_color" scope="session" value="#ccd" />
-		<c:set var="border" scope="session" value="1px solid #99c" />
+		<c:set var="message_color" scope="session" value="#06c" />
+		<c:set var="background_color" scope="session" value="#def" />
+		<c:set var="border" scope="session" value="1px solid #bcd" />
 		<c:set var="present" scope="session" value="true" />
 	</c:when>
 	<c:otherwise>

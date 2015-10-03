@@ -17,9 +17,9 @@ tr.Down > td { padding: 0px 10px 15px 10px; background-color: #eef; }
 tr.active > td { color: #333; }
 tr.passive > td { color: #a00; }
 tr.index, tr.contact > td { font-weight: bold; }
-tr.ColumnHeaders > td { padding: 10px 4px; background-color: #9cf; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #999; }
+tr.ColumnHeaders > td { padding: 10px 4px; background-color: #adf; font-size: 1.2em; font-weight: bold; border-bottom: 1px solid #999; }
 tr.ColumnHeaders > td > img { padding: 0px 10px; }
-tr.ListHeader > td { background-color: #9cf; border-bottom: 1px solid #999; padding: 5px; }
+tr.ListHeader > td { background-color: #adf; border-bottom: 1px solid #999; padding: 5px; }
 tr.ColumnHeaders > td > table, tr.ListHeader > td > table { border: 0px dotted #fff; }
 tr.ColumnHeaders > td > span.Icon { padding: 0px 10px; }
 tr.ColumnHeaders > td > span.Title { font-size: 1.2em; position: relative; top: -10px; color: #e30; }
