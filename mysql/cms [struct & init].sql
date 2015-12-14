@@ -257,6 +257,21 @@ CREATE TABLE IF NOT EXISTS `user_roles` (
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `views`
+--
+
+CREATE TABLE IF NOT EXISTS `views` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `page_id` int(11) unsigned NOT NULL,
+  `counter` int(11) unsigned NOT NULL,
+  `visited` datetime NOT NULL,
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `page_id` (`page_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `visitors`
 --
 
@@ -408,6 +423,12 @@ ALTER TABLE `user_roles`
   ADD CONSTRAINT `fk_roles_functions` FOREIGN KEY (`function_id`) REFERENCES `admin_functions` (`id`),
   ADD CONSTRAINT `fk_roles_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
+--
+-- Ograniczenia dla tabeli `views`
+--
+ALTER TABLE `views`
+  ADD CONSTRAINT `views_pages` FOREIGN KEY (`page_id`) REFERENCES `pages` (`id`);
+  
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -296,6 +296,57 @@ public class Comments_Model {
 		return counts;
 	}
 
+	public List<Counts_Dao> getCategoryViewsCounts(int id) throws SQLException, ParseException {
+
+		List<Counts_Dao> counts = new ArrayList<Counts_Dao>();
+		
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			
+			query = "SELECT page_id, counter" +
+					" FROM views" + 
+					" INNER JOIN pages ON pages.id = views.page_id" +
+					" INNER JOIN categories ON categories.id = pages.category_id" +
+					" WHERE category_id = ?" + 
+					" GROUP BY page_id";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, id);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				Counts_Dao count = new Counts_Dao();
+				
+				count.setPage_id(rs.getInt("page_id"));
+				count.setComments_count(rs.getInt("counter"));
+				
+				counts.add(count);
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return counts;
+	}
+
 	public List<Counts_Dao> getFoundCommentCounts(String search) throws SQLException, ParseException {
 
 		List<Counts_Dao> counts = new ArrayList<Counts_Dao>();

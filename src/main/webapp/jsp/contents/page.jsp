@@ -8,7 +8,9 @@
 		<span class="User"><img src="images/author.png" /><c:out value="${site.login}" /></span>
 	</div>
 	<div class="Comments">
-		<a href="#comments">Komentarzy: <b><c:out value="${count.comments_count}" /></b></a>		
+		<a href="#comments">Komentarzy: <b><c:out value="${count.comments_count}" /></b></a>
+		&nbsp;
+		<span class="Views">Wyświetleń: <b><c:out value="${previews}" /></b></span>
 	</div>
 </h1>
 

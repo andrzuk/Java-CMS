@@ -484,6 +484,73 @@ public class Pages_Model {
 			}
 		}
 		
+		// pobiera id wstawionego rekordu:
+		
+		int page_id = 0;
+		
+		try {
+			
+			query = "SELECT id " + 
+					" FROM " + TABLE +
+					" ORDER BY id DESC LIMIT 1";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				page_id = rs.getInt("id");
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		
+		// dopisuje pozycję do tabeli views dla nowej strony:
+		
+		try {
+			
+			query = "INSERT INTO views" +
+					" (id, page_id, counter, visited) VALUES" +
+					" (NULL, ?, ?, NOW())";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, page_id);
+			preparedStatement.setInt(2, 0);
+			
+			result = preparedStatement.executeUpdate();
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
 		return result;
 	}
 
@@ -537,6 +604,36 @@ public class Pages_Model {
 		String query = null;
 		PreparedStatement preparedStatement = null;
 
+		// usuwa wpis w tabeli views dla strony:
+		
+		try {
+			
+			query = "DELETE FROM views WHERE page_id = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, id);
+			
+			result = preparedStatement.executeUpdate();
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		// usuwa stronę:
+		
 		try {
 			
 			query = "DELETE FROM " + TABLE + " WHERE id = ?";
@@ -562,7 +659,7 @@ public class Pages_Model {
 				db.Connect.getDbConnection().close();
 			}
 		}
-		
+
 		return result;
 	}
 	
@@ -786,5 +883,81 @@ public class Pages_Model {
 		}
 		
 		return result;
+	}
+	
+	public int getArticleViewsCount(int id) throws SQLException {
+
+		int counter = 0;
+		int result = 0;
+		
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		// zwiększa licznik:
+		
+		try {
+			
+			query = "UPDATE views" +
+					" SET counter = counter + 1, visited = NOW()" +
+					" WHERE page_id = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, id);
+			
+			result = preparedStatement.executeUpdate();
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+
+		// pobiera aktualną wartość:
+		
+		try {
+			
+			query = "SELECT counter" + 
+					" FROM views" +
+					" WHERE page_id = ?";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setInt(1, id);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				counter = rs.getInt("counter");
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return counter;
 	}
 }

@@ -42,6 +42,7 @@ public class Category_Servlet extends HttpServlet {
 		
 		int id = parameter.getId();
 		List<Counts_Dao> counts = null;
+		List<Counts_Dao> previews = null;
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/public_page.jsp");
 		
@@ -66,6 +67,7 @@ public class Category_Servlet extends HttpServlet {
 			categories = importObject.getActives();
 			sites = modelObject.getArticleHeaders(id);
 			counts = commentsObject.getCategoryCommentCounts(id);
+			previews = commentsObject.getCategoryViewsCounts(id);
 		} 
 		catch (SQLException e) {
 
@@ -96,6 +98,7 @@ public class Category_Servlet extends HttpServlet {
 		request.setAttribute("articles", sites.size());
 		request.setAttribute("data", sites);
 		request.setAttribute("counts", counts);
+		request.setAttribute("previews", previews);
 		
 		dispatcher.forward(request, response);
 	}

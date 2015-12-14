@@ -44,6 +44,7 @@ public class Page_Servlet extends HttpServlet {
 		
 		int id = parameter.getId();
 		Counts_Dao count = null;
+		int previews = 0; 
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/public_page.jsp");
 		
@@ -68,6 +69,7 @@ public class Page_Servlet extends HttpServlet {
 			comments = commentsObject.getActives(id);
 			count = commentsObject.getArticleCommentCount(id);
 			articles = modelObject.getArticleHeaders(site.getCategory_id());
+			previews = modelObject.getArticleViewsCount(id);
 			code_highlight_theme = config.getConfig("code_highlight_theme");
 		} 
 		catch (SQLException e) {
@@ -101,6 +103,7 @@ public class Page_Servlet extends HttpServlet {
 		request.setAttribute("comments", comments);
 		request.setAttribute("count", count);
 		request.setAttribute("articles", articles);
+		request.setAttribute("previews", previews);
 		
 		request.setAttribute("message", request.getSession().getAttribute("message"));
 		request.getSession().removeAttribute("message");

@@ -58,6 +58,7 @@ span.comment_date { color: #090; font-size: 1.0em; }
 span.comment_email { color: #009; font-size: 1.0em; }
 span.comment_ip { color: #777; font-size: 1.0em; padding-right: 15px; }
 span.comments_count { color: #f30; font-size: 1.0em; padding-left: 5px; }
+span.views_count { color: #c03; font-size: 1.0em; padding-left: 5px; }
 section.comment_text { color: #444; font-size: 1.0em; font-style: italic; margin-top: 10px; }
 span.comment_date > img { vertical-align: middle; padding: 0px 5px 0px 0px; }
 span.comment_nick > img { vertical-align: middle; padding: 0px 5px 0px 10px; }
@@ -86,6 +87,7 @@ div.Modified > span.Date > img { vertical-align: middle; padding: 0px 5px 0px 0p
 div.Modified > span.User > img { vertical-align: middle; padding: 0px 5px 0px 10px; }
 div.Comments { text-align: center; font-size: 0.5em; color: #f30; line-height: 1.0em; font-weight: normal; }
 div.Separator { margin: 0px 20px; padding: 0px 0px; line-height: 0px; border-bottom: 1px dotted #bbb; }
+span.Views { color: #f63; }
 
 pre { border: 1px solid #ccc; color: green; background-color: #fff; padding: 10px; overflow: auto; word-wrap: normal; white-space: pre; }
 
