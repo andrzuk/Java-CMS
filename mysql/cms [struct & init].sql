@@ -427,7 +427,7 @@ ALTER TABLE `user_roles`
 -- Ograniczenia dla tabeli `views`
 --
 ALTER TABLE `views`
-  ADD CONSTRAINT `views_pages` FOREIGN KEY (`page_id`) REFERENCES `pages` (`id`);
+  ADD CONSTRAINT `fk_views_pages` FOREIGN KEY (`page_id`) REFERENCES `pages` (`id`);
   
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
