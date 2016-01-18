@@ -12,6 +12,12 @@
 				<c:set var="comments" value="${count.comments_count}" />
 			</c:if>
 		</c:forEach>
+		<c:set var="views" value="0" />
+		<c:forEach items="${previews}" var="preview">
+			<c:if test="${preview.page_id == site.id}">
+				<c:set var="views" value="${preview.comments_count}" />
+			</c:if>
+		</c:forEach>
 		
 		<div class="comment">
 		
@@ -19,6 +25,7 @@
 			<span class="comment_date"><img src="images/date.png" /><c:out value="${site.modified_short}" /></span>
 			<span class="comment_nick"><img src="images/author.png" /><c:out value="${site.login}" /></span>
 			<span class="comments_count">Komentarzy: <b><c:out value="${comments}" /></b></span>
+			<span class="views_count">Wyświetleń: <b><c:out value="${views}" /></b></span>
 			<section class="comment_text"><c:out value="${site.contents}" escapeXml="true" /></section>
 			<div class="continue"><a href="/page?id=<c:out value="${site.id}" />">Czytaj dalej...</a></div>
 			

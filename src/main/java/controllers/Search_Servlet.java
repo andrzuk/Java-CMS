@@ -42,14 +42,14 @@ public class Search_Servlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Counts_Dao> counts = null;
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/public_page.jsp");
 		
 		Map<String, String> attributes = new HashMap<String, String>();
 		
+		List<Counts_Dao> counts = null;
 		List<Categories_Dao> categories = null;
 		List<Pages_Dao> sites = null;
+		List<Counts_Dao> previews = null;
 		
 		Pages_Model modelObject = new Pages_Model();
 		Categories_Model importObject = new Categories_Model();
@@ -61,6 +61,7 @@ public class Search_Servlet extends HttpServlet {
 			categories = importObject.getActives();
 			sites = modelObject.getFoundHeaders(request.getParameter("search_value"));
 			counts = commentsObject.getFoundCommentCounts(request.getParameter("search_value"));
+			previews = commentsObject.getFoundViewsCounts(request.getParameter("search_value"));
 		} 
 		catch (SQLException e) {
 
@@ -82,6 +83,7 @@ public class Search_Servlet extends HttpServlet {
 		request.setAttribute("navigator", categories);
 		request.setAttribute("data", sites);
 		request.setAttribute("counts", counts);
+		request.setAttribute("previews", previews);
 		
 		dispatcher.forward(request, response);
 	}

@@ -449,6 +449,61 @@ public class Comments_Model {
 		return count;
 	}
 
+	public List<Counts_Dao> getFoundViewsCounts(String search) throws SQLException, ParseException {
+
+		List<Counts_Dao> counts = new ArrayList<Counts_Dao>();
+		String search_mask = search.replaceAll(" ", "%");
+		
+		String query = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			
+			query = "SELECT page_id, counter AS licznik" +
+					" FROM views" + 
+					" INNER JOIN pages ON pages.id = views.page_id" +
+					" INNER JOIN categories ON categories.id = pages.category_id" +
+					" WHERE (contents LIKE ? OR title LIKE ? OR description LIKE ? OR caption LIKE ?) AND pages.visible = 1" + 
+					" GROUP BY page_id";
+
+			preparedStatement = db.Connect.getDbConnection().prepareStatement(query);
+			
+			preparedStatement.setString(1, "%" + search_mask + "%");
+			preparedStatement.setString(2, "%" + search_mask + "%");
+			preparedStatement.setString(3, "%" + search_mask + "%");
+			preparedStatement.setString(4, "%" + search_mask + "%");
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				Counts_Dao count = new Counts_Dao();
+				
+				count.setPage_id(rs.getInt("page_id"));
+				count.setComments_count(rs.getInt("licznik"));
+				
+				counts.add(count);
+            }			
+		} 
+		catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		} 
+		finally {
+
+			if (preparedStatement != null) {
+
+				preparedStatement.close();
+			}
+			if (db.Connect.getDbConnection() != null) {
+
+				db.Connect.getDbConnection().close();
+			}
+		}
+		
+		return counts;
+	}
+
 	public int save() throws SQLException {
 
 		int result = 0;
