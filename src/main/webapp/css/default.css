@@ -11,9 +11,10 @@ input[type="text"].Goto { width: 50px; text-align: center; }
 select.PageLines { width: 60px; }
 table { border: 1px solid #999; }
 td { border: 0px dotted #fff; padding: 1px 5px; }
-tr.Dialog > td { padding: 15px; background-color: #eef; }
-tr.Up > td { padding: 15px 10px 0px 10px; background-color: #eef; }
-tr.Down > td { padding: 0px 10px 15px 10px; background-color: #eef; }
+tr.Dialog > td { padding: 15px; background-color: #f0f8ff; }
+tr.Up > td { padding: 15px 10px 0px 10px; }
+tr.Down > td { padding: 0px 10px 15px 10px; }
+tr.Up > td, tr.Down > td { background-color: #f0f8ff; }
 tr.active > td { color: #333; }
 tr.passive > td { color: #a00; }
 tr.index, tr.contact > td { font-weight: bold; }

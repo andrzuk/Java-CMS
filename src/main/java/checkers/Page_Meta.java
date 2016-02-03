@@ -18,6 +18,7 @@ public class Page_Meta {
 	private String main_style;
 	private String custom_style;
 	private String site_verification;
+	private String bing_verification;
 	
 	public Page_Meta() {
 		
@@ -35,6 +36,7 @@ public class Page_Meta {
 			setMain_style(configObject.getConfig("main_style"));
 			setCustom_style(configObject.getConfig("custom_style"));
 			setSite_verification(configObject.getConfig("site_verification"));
+			setBing_verification(configObject.getConfig("bing_verification"));
 		} 
 		catch (SQLException e) {
 		
@@ -58,6 +60,7 @@ public class Page_Meta {
 		attributes.put("main_style", getMain_style());
 		attributes.put("custom_style", getCustom_style());
 		attributes.put("site_verification", getSite_verification());
+		attributes.put("bing_verification", getBing_verification());
 		
 		return attributes;
 	}
@@ -150,6 +153,16 @@ public class Page_Meta {
 	public void setSite_verification(String site_verification) {
 	
 		this.site_verification = site_verification;
+	}
+
+	public String getBing_verification() {
+	
+		return bing_verification;
+	}
+	
+	public void setBing_verification(String bing_verification) {
+	
+		this.bing_verification = bing_verification;
 	}
 
 	public String getCustom_style() {

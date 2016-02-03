@@ -8,6 +8,7 @@
   <meta name="keywords" content="<c:out value="${page.main_keywords}" />" />
   <meta name="author" content="<c:out value="${page.main_author}" />" />
   <meta name="google-site-verification" content="<c:out value="${page.site_verification}" />" />
+  <meta name="msvalidate.01" content="<c:out value="${page.bing_verification}" />" />
   <link rel="stylesheet" type="text/css" href="<c:out value="${page.main_style}" />" />
   <link rel="stylesheet" type="text/css" href="/custom/<c:out value="${page.custom_style}" />" />
   
@@ -24,5 +25,5 @@
     </c:otherwise>
   </c:choose> 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   
