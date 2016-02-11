@@ -4,7 +4,7 @@
 <div class="TopRow">
 	<span id="Logo">
 		<a href="/">
-			<img src="<c:out value="${page.logo_image}" />" title="Home Page" alt="" />
+			<img src="<c:out value="${page.logo_image}" />" title="Home Page" alt="<c:out value="${page.logo_caption}" />" />
 		</a>
 	</span>
 	<span id="Logged">

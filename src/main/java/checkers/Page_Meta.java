@@ -15,6 +15,7 @@ public class Page_Meta {
 	private String main_footer;
 	private String main_author;
 	private String logo_image;
+	private String logo_caption;
 	private String main_style;
 	private String custom_style;
 	private String site_verification;
@@ -33,6 +34,7 @@ public class Page_Meta {
 			setMain_footer(configObject.getConfig("main_footer"));
 			setMain_author(configObject.getConfig("main_author"));
 			setLogo_image(configObject.getConfig("logo_image"));
+			setLogo_caption(configObject.getConfig("logo_caption"));
 			setMain_style(configObject.getConfig("main_style"));
 			setCustom_style(configObject.getConfig("custom_style"));
 			setSite_verification(configObject.getConfig("site_verification"));
@@ -57,6 +59,7 @@ public class Page_Meta {
 		attributes.put("main_footer", getMain_footer());
 		attributes.put("main_author", getMain_author());
 		attributes.put("logo_image", getLogo_image());
+		attributes.put("logo_caption", getLogo_caption());
 		attributes.put("main_style", getMain_style());
 		attributes.put("custom_style", getCustom_style());
 		attributes.put("site_verification", getSite_verification());
@@ -133,6 +136,16 @@ public class Page_Meta {
 	public void setLogo_image(String logo_image) {
 		
 		this.logo_image = logo_image;
+	}
+
+	public String getLogo_caption() {
+		
+		return logo_caption;
+	}
+
+	public void setLogo_caption(String logo_caption) {
+		
+		this.logo_caption = logo_caption;
 	}
 
 	public String getMain_style() {

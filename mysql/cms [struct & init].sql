@@ -337,7 +337,9 @@ INSERT INTO `configuration` (`id`, `key_name`, `key_value`, `meaning`, `field_ty
 (26, 'email_sender_host', 'smtp.poczta.gazeta.pl', 'host serwera pocztowego', 1, 1, '2015-03-03 04:51:44'),
 (27, 'email_sender_user', 'cms_mailer', 'login konta pocztowego nadawcy', 1, 1, '2015-03-03 04:44:32'),
 (28, 'email_sender_password', 'pwd_java_2015', 'hasło konta pocztowego nadawcy', 1, 1, '2015-03-03 04:45:49'),
-(29, 'email_subject', 'Mail Manager - New comment was received', 'temat maila raportującego nadesłanie komantarza', 1, 1, '2015-03-03 04:27:07');
+(29, 'email_subject', 'Mail Manager - New comment was received', 'temat maila raportującego nadesłanie komantarza', 1, 1, '2015-03-03 04:27:07'),
+(30, 'bing_verification', 'A4D0205410C1D13BA65AE3EA0DE95E34', 'kod weryfikacji strony w narzędziach bing', 1, 1, '2016-02-03 13:59:08'),
+(31, 'logo_caption', 'Projekt aplikacji webowej J2EE opartej na serwletach i szablonach JSP/JSTL', 'text alternatywny obrazka logo strony', 2, 1, '2016-02-11 16:29:42');
 
 --
 -- Zrzut danych tabeli `users`
