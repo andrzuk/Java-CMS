@@ -15,7 +15,7 @@
 	</jsp:include>
 
 	<jsp:include page="/jsp/templates/titlebar.jsp">
-		<jsp:param name="title_image" value="images/config.png" />
+		<jsp:param name="title_image" value="images/options.png" />
 		<jsp:param name="columns_count" value="${columns_count}" />
 	</jsp:include>
 	

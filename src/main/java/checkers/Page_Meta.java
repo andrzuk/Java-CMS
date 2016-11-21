@@ -18,6 +18,7 @@ public class Page_Meta {
 	private String logo_caption;
 	private String main_style;
 	private String custom_style;
+	private String custom_script;
 	private String site_verification;
 	private String bing_verification;
 	
@@ -37,9 +38,10 @@ public class Page_Meta {
 			setLogo_caption(configObject.getConfig("logo_caption"));
 			setMain_style(configObject.getConfig("main_style"));
 			setCustom_style(configObject.getConfig("custom_style"));
+			setCustom_script(configObject.getConfig("custom_script"));
 			setSite_verification(configObject.getConfig("site_verification"));
 			setBing_verification(configObject.getConfig("bing_verification"));
-		} 
+		}
 		catch (SQLException e) {
 		
 			e.printStackTrace();
@@ -62,6 +64,7 @@ public class Page_Meta {
 		attributes.put("logo_caption", getLogo_caption());
 		attributes.put("main_style", getMain_style());
 		attributes.put("custom_style", getCustom_style());
+		attributes.put("custom_script", getCustom_script());
 		attributes.put("site_verification", getSite_verification());
 		attributes.put("bing_verification", getBing_verification());
 		
@@ -186,5 +189,15 @@ public class Page_Meta {
 	public void setCustom_style(String custom_style) {
 		
 		this.custom_style = custom_style;
+	}
+
+	public String getCustom_script() {
+		
+		return custom_script;
+	}
+
+	public void setCustom_script(String custom_script) {
+		
+		this.custom_script = custom_script;
 	}
 }

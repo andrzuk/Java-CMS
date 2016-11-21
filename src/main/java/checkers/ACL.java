@@ -21,6 +21,7 @@ public class ACL {
 		items.put("admin", 3);
 		items.put("config", 1);
 		items.put("styles", 1);
+		items.put("scripts", 1);
 		items.put("categories", 2);
 		items.put("pages", 2);
 		items.put("comments", 2);

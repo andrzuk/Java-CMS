@@ -119,7 +119,7 @@ public class Admin_Model {
 		module_item = new Admin_Dao();
 		module_item.setModule(module_name);
 		module_item.setLink("/" + module_name);
-		module_item.setImage("images/config.png");
+		module_item.setImage("images/options.png");
 		module_item.setTitle("Konfiguracja");
 		modules.add(module_item);
 
@@ -129,6 +129,14 @@ public class Admin_Model {
 		module_item.setLink("/" + module_name);
 		module_item.setImage("images/styles.png");
 		module_item.setTitle("Wygląd");
+		modules.add(module_item);
+		
+		module_name = "scripts";
+		module_item = new Admin_Dao();
+		module_item.setModule(module_name);
+		module_item.setLink("/" + module_name);
+		module_item.setImage("images/script.png");
+		module_item.setTitle("Działanie");
 		modules.add(module_item);
 		
 		module_name = "categories";

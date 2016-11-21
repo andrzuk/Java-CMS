@@ -15,7 +15,12 @@
   <c:if test="${not empty page.highlight_theme}">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/<c:out value="${page.highlight_theme}" />" />
   </c:if>
-  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="/custom/<c:out value="${page.custom_script}" />"></script>
+  <script src="js/Chart.min.js"></script>
+  <script src="js/custom.js"></script>
+    
   <c:choose>
     <c:when test="${not empty page.main_title}">
   	  <title><c:out value="${page.main_title}" /></title>
@@ -25,5 +30,3 @@
     </c:otherwise>
   </c:choose> 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  
