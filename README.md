@@ -11,6 +11,7 @@ Java MVC Application based on Servlets &amp; JSP
   - logins register
   - access control list
   - styles editor
+  - scripts editor
   - creating categories as dynamic navi
   - creating articles (pages) linked to categories
   - managing comments to articles (pages)
